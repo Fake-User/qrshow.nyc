@@ -1,6 +1,6 @@
 /* db */
 import { Database } from "bun:sqlite";
-const db = new Database(`store/demo.sqlite`);
+const db = new Database(`${process.env.STORE}/demo.sqlite`);
 db.run(`
     CREATE TABLE IF NOT EXISTS submissions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,7 +55,7 @@ const server = Bun.serve({
         if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
-        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(`store/demo.sqlite`), {headers: {"Content-Type": "application/x-sqlite"}})};
+        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(`${process.env.STORE}/demo.sqlite`), {headers: {"Content-Type": "application/x-sqlite"}})};
         return new Response("error", {status: 404});
     },
 });
