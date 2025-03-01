@@ -262,7 +262,7 @@
 
         <footer id="text" aria-label="event details and contact information.">
             qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc<br aria-hidden="true">
-            397&nbsp;bridge&nbsp;street&nbsp;brooklyn<br aria-hidden="true">
+            <button id="address" aria-label="address">397&nbsp;bridge&nbsp;street&nbsp;brooklyn</button><br aria-hidden="true">
             <span aria-hidden="true">???&nbsp;</span><button id="email" aria-label="email">hi@greg.technology</button>
         </footer >
 
@@ -310,6 +310,11 @@
                 email.textContent = "···········copied!";
                 navigator.clipboard.writeText("hi@greg.technology");
                 setTimeout(() => {email.textContent = "hi@greg.technology"}, 500);
+            };
+
+            const address = document.getElementById("address");
+            function openMaps(){
+                window.location.href='maps:q=397+Bridge+Street+Brooklyn+New+York';
             };
 
             function closeForm(){
@@ -363,6 +368,7 @@
 
             const event = new CustomEvent('pointerdown', {bubbles: true, cancelable: true});
 
+
             window.addEventListener("keydown", e => {
                 switch(true){
                     case(e.key === "Escape"):
@@ -378,7 +384,8 @@
             });
             window.addEventListener("touchend", () => {mask.style.maskPosition = "-9999px -9999px"}, {passive: true});
             mask.addEventListener("touchstart", e => {e.preventDefault(); moveCursor(e)});
-            //  email.addEventListener("pointerdown", copy, {passive: true});
+            address.addEventListener("pointerdown", openMaps, {passive: true});
+            email.addEventListener("pointerdown", copy, {passive: true});
         </script>
     </body>
 </html>
