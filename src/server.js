@@ -39,10 +39,10 @@ async function dbInsert(req){
 };
 
 /* files */
-const fileSubmissions = Bun.file(`submissions.html`);
-const fileBasilisk = Bun.file(`basilisk.blend.zip`);
-const fileSqlite3Wasm = Bun.file(`sqlite3.wasm`);
-const fileIndex = Bun.file(`index.html`);
+const fileSubmissions = Bun.file(`./submissions.html`);
+const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
+const fileSqlite3Wasm = Bun.file(`./sqlite3.wasm`);
+const fileIndex = Bun.file(`./index.html`);
 
 /* routes */
 const server = Bun.serve({
