@@ -1,6 +1,6 @@
 /* db */
 import { Database } from "bun:sqlite";
-const db = new Database("/app/store/demo.sqlite");
+const db = new Database(`${import.meta.dir}/store/demo.sqlite`);
 db.run(`
     CREATE TABLE IF NOT EXISTS submissions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
