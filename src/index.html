@@ -250,7 +250,7 @@
                 </form>
             </div>
             <div id="tickets" class="form" role="tabpanel">
-                ha, gotcha! qr show is a public event, just pull up. if you want a fun email though we can send you a fun email.<hr>
+                ha, gotcha! qr show is a public event, just pull up. if you want a fun email, we might send you a fun email.<hr>
                 <form action="/submit" method="post">
                     <input type="hidden" name="role" value="pullup">
                     <input type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
@@ -351,7 +351,6 @@
                         const submitButton = form.querySelector('button[type="submit"]');
                         submitButton.innerHTML = '[&nbsp;submitted&nbsp;&#9745;&nbsp;]';
                         setTimeout(() => {submitButton.innerHTML = "[&nbsp;submit&nbsp;]"; form.reset(); closeForm();}, 1000);
-
                     }
                     catch(error){
                         console.error('Error:', error);
