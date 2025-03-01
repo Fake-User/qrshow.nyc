@@ -88,6 +88,7 @@
                 top: 0;
             }
             #forms{
+                max-width: 100%;
                 width: min(38rem, 100%);
                 height: min-content;
             }
@@ -95,7 +96,6 @@
                 justify-content: center;
                 cursor: pointer;
                 display: flex;
-                gap: 20px;
             }
             .form-toggle{
                 transition: flex-grow 0.5s ease;
@@ -171,7 +171,6 @@
                 margin: 0;
             }
 
-
             @media(hover){
                 button:focus-visible, button:hover{
                     transition: background-color 0s, color 0s;
@@ -244,7 +243,7 @@
                 </form>
             </div>
             <div id="tickets" class="form" role="tabpanel">
-                ha, gotcha! qr show is a public event, just pull up. if you want a fun email, we could send you a fun email.<hr>
+                qr show is a public event, just pull up. if you want a fun email, we could send you a fun email.<hr>
                 <form action="/submit" method="post">
                     <input type="hidden" name="role" value="pullup">
                     <input type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
