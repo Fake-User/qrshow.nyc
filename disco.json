@@ -6,7 +6,7 @@
             "volumes": [
                 {
                     "name": "store",
-                    "destinationPath": "/dist/store"
+                    "destinationPath": "/app/store"
                 }
             ]
         }
