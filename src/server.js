@@ -1,6 +1,6 @@
 /* db */
 import { Database } from "bun:sqlite";
-const db = new Database(`${import.meta.dir}/store/demo.sqlite`);
+const db = new Database(`store/demo.sqlite`);
 db.run(`
     CREATE TABLE IF NOT EXISTS submissions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,10 +39,10 @@ async function dbInsert(req){
 };
 
 /* files */
-const fileSubmissions = Bun.file(`${import.meta.dir}/submissions.html`);
-const fileBasilisk = Bun.file(`${import.meta.dir}/basilisk.blend.zip`);
-const fileSqlite3Wasm = Bun.file(`${import.meta.dir}/sqlite3.wasm`);
-const fileIndex = Bun.file(`${import.meta.dir}/index.html`);
+const fileSubmissions = Bun.file(`submissions.html`);
+const fileBasilisk = Bun.file(`basilisk.blend.zip`);
+const fileSqlite3Wasm = Bun.file(`sqlite3.wasm`);
+const fileIndex = Bun.file(`index.html`);
 
 /* routes */
 const server = Bun.serve({
@@ -55,7 +55,7 @@ const server = Bun.serve({
         if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
-        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(`${import.meta.dir}/store/demo.sqlite`), {headers: {"Content-Type": "application/x-sqlite"}})};
+        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(`store/demo.sqlite`), {headers: {"Content-Type": "application/x-sqlite"}})};
         return new Response("error", {status: 404});
     },
 });
