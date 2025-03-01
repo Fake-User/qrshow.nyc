@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!--···········view···source···is···less···fun···········-->
+        <meta name="description" content="qr show &#x2736;&#xFE0E; 03.16.25 &#x2736;&#xFE0E; nyc">
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:image" content="https://pub-00bc7a7c079d493391109fe14bbac1f3.r2.dev/ogbasilisk.gif">
+        <meta property="og:title" content="qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;&#x2736;&#xFE0E;&nbsp;nyc">
+        <meta property="og:image:alt" content="a basilisic clutches a q r code cube">
+        <meta property="og:image:type" content="image/gif">
+        <meta property="og:type" content="website">
+        <meta name="twitter:image" content="https://pub-00bc7a7c079d493391109fe14bbac1f3.r2.dev/ogbasilisk.gif">
+        <meta name="twitter:title" content="qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;&#x2736;&#xFE0E;&nbsp;nyc">
+        <meta property="twitter:domain" content="qrshow-nyc.pages.dev">
+        <meta name="twitter:card" content="summary_large_image">
+        <title>qr show &#x2736;&#xFE0E; 03.16.25 &#x2736;&#xFE0E; nyc</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <style>
+            @font-face{
+                src: url("ogcourier.woff2");
+                font-family: courier;
+            }
+            *::selection{
+                background-color: #fff;
+                color: #000;
+            }
+            html{
+                scrollbar-width: none;
+            }
+            body{
+                transition: height 5s ease;
+                justify-content: center;
+                background-color: #000;
+                flex-direction: column;
+                box-sizing: border-box;
+                scrollbar-width: none;
+                font-family: courier;
+                align-items: center;
+                min-height: 100dvh;
+                cursor: zoom-in;
+                padding: 20px;
+                display: flex;
+                width: 100vw;
+                color: #fff;
+                margin: 0;
+                gap: 20px;
+            }
+            button{
+                transition: background-color 0.5s, color 0.5s;
+                font-family: courier;
+                background: #000;
+                font-size: 1rem;
+                outline: none;
+                cursor: pointer;
+                border: none;
+                color: #fff;
+            }
+
+            #image-wrapper{
+                width: min(38rem, 100vw);
+                aspect-ratio: 1 / 1;
+                position: relative;
+            }
+            #basilisk{
+                position: absolute;
+                user-select: none;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+            #mask{
+                mask-position: -9999px -9999px;
+                mask-image: url("cursor.webp");
+                -webkit-touch-callout: none;
+                image-rendering: pixelated;
+                mix-blend-mode: difference;
+                -webkit-user-select: none;
+                mask-repeat: no-repeat;
+                position: absolute;
+                user-select: none;
+                mask-size: cover;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+            #forms{
+                width: min(38rem, 100%);
+                height: min-content;
+            }
+            #form-toggles{
+                justify-content: center;
+                cursor: pointer;
+                display: flex;
+                gap: 20px;
+            }
+            .form-toggle{
+                transition: flex-grow 0.5s ease;
+
+                &[active="true"]{
+                    transition: background-color 0s, color 0s, flex-grow 0.5s ease;
+                    background-color: #fff;
+                    flex-grow: 1;
+                    color: #000;
+                }
+            }
+            .form{
+                width: min(38rem, 100%);
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                cursor: default;
+                display: none;
+                padding: 20px;
+            }
+            hr{
+                border: none;
+                transform: translateX(-20px);
+                border-top: 1px solid #fff;
+                width: calc(100% + 40px);
+                box-sizing: border-box;
+                margin: 20px 0;
+            }
+            ul{
+                list-style-type: "> ";
+            }
+            .dashed{
+                border-top: 1px dashed #fff;
+            }
+            input[type="text"], input[type="email"], input[type="url"]{
+                box-sizing: border-box;
+                font-family: courier;
+                background: #0000;
+                font-size: 1rem;
+                outline: none;
+                border: none;
+                color: #fff;
+                width: 100%;
+
+                &::placeholder{
+                    color: #fff;
+                }
+            }
+            .radio-option{
+                align-items: center;
+                display: flex;
+                gap: 4px;
+            }
+            input[type="radio"], input[type="checkbox"]{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border: 1px solid #fff;
+                background-color: #000;
+                border-radius: 0;
+                cursor: pointer;
+                padding: 4px;
+                height: 16px;
+                width: 16px;
+
+                &:checked{
+                    background-color: #fff;
+                }
+            }
+
+            #text{
+                text-align: center;
+                cursor: text;
+                margin: 0;
+            }
+            #email, a{
+                all: unset;
+                transition: background-color 0.5s ease, color 0.5s ease;
+                text-align: right;
+                cursor: pointer;
+                width: 18ch;
+            }
+
+            @media(hover){
+                button:focus-visible, button:hover, #email:focus-visible, #email:hover{
+                    transition: background-color 0s, color 0s;
+                    background-color: #fff;
+                    color: #000;
+                }
+                .form-toggle:focus-visible, .form-toggle:hover{
+                    transition: flex-grow 0.5s;
+                    flex-grow: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="image-wrapper" role="none">
+            <img id="basilisk" src="basilisk.gif" alt="a mischievous basilisk guards six secrets. it will only share them with inquisitive friends.">
+            <img id="mask" src="mask.png" alt="a strange glow reveals something familiar, but it is too occluded to see entirely.">
+        </div>
+
+        <section id="forms" aria-label="forms">
+            <div id="form-toggles" role="tablist" aria-label="form selection">
+                <button class="form-toggle" form="submissions" active="false" role="tab" aria-controls="submissions">[&nbsp;submissions&nbsp;]</button>
+                <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer">[&nbsp;volunteer&nbsp;]</button>
+                <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets">[&nbsp;tickets&nbsp;]</button>
+            </div>
+            <div id="submissions" class="form" role="tabpanel">
+                qr show is an exhibition hosted by the recurse center. it features many, any, & all things "qr code" including:
+                <ul>
+                    <li>protocols: technical deep dives & exploites</li>
+                    <li>history: predecessors, competitors, & lore</li>
+                    <li>payloads: data inside qr codes</li>
+                    <li>art: aesthetic indulgence</li>
+                </ul>
+                we are currently accepting submissions. what kinds? all kinds! (besides inappropriate ones) for example:
+                <ul>
+                    <li>qr codes that cause hiccups & <del>incite&nbsp;violence</del> laughter</li>
+                    <li>collections of qr codes found in the wild</li>
+                    <li>devices that generate / consume qr codes</li>
+                    <li>qr codes made out of ...? moss?</li>
+                </ul>
+                does your submission have to be your own work?<br ari-hidden="true"><br ari-hidden="true">
+                <div style="padding: 0 20px;">you are allowed to propose other peoples projects. please provide their email so we reach out.</div><br ari-hidden="true">
+                <div style="text-align: center;">submissions close 03.07.25 - 11:59pm est</div><hr>
+                <form action="/submit" method="post">
+                    <input type="hidden" name="role" value="submission">
+                    <div>submission category:</div><div>
+                        <div class="radio-option"><input type="radio" name="category" value="other" required><label for="other">transcends categorization</label></div>
+                        <div class="radio-option"><input type="radio" name="category" value="protocol" required><label for="protocol">protocol</label></div>
+                        <div class="radio-option"><input type="radio" name="category" value="payload" required><label for="payload">payload</label></div>
+                        <div class="radio-option"><input type="radio" name="category" value="history" required><label for="history">history</label></div>
+                        <div class="radio-option"><input type="radio" name="category" value="art" required><label for="art">art</label></div>
+                    </div><hr class="dashed">
+                    <input type="text" name="medium" maxlength="64" placeholder="medium (printed, projected, ...):" required><hr class="dashed">
+                    <input type="email" name="author" maxlength="254" placeholder="author email (if applicable):"><hr class="dashed">
+                    <input type="text" name="title" maxlength="512" placeholder="submission title:" required><hr class="dashed">
+                    <input type="url" name="link" maxlength="512" placeholder="submission link:" required><hr class="dashed">
+                    <input type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
+                    <input type="text" name="name" maxlength="64" placeholder="name:" required><hr class="dashed">
+                    <input type="text" name="notes" maxlength="512" placeholder="notes (optional):"><hr>
+                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
+                </form>
+            </div>
+            <div id="volunteer" class="form" role="tabpanel">
+                feel like pitching in? we could maybe use a few folks to help set up and clean up.<hr>
+                <form action="/submit" method="post">
+                    <input type="hidden" name="role" value="volunteer">
+                    <input type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
+                    <input type="text" name="name" maxlength="64" placeholder="name:" required><hr>
+                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
+                </form>
+            </div>
+            <div id="tickets" class="form" role="tabpanel">
+                ha, gotcha! qr show is a public event, just pull up. if you want a fun email though we can send you a fun email.<hr>
+                <form action="/submit" method="post">
+                    <input type="hidden" name="role" value="pullup">
+                    <input type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
+                    <input type="text" name="name" maxlength="64" placeholder="name:" required><hr>
+                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
+                </form>
+            </div>
+        </section>
+
+        <footer id="text" aria-label="event details and contact information.">
+            qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc<br aria-hidden="true">
+            397&nbsp;bridge&nbsp;street&nbsp;brooklyn<br aria-hidden="true">
+            <span aria-hidden="true">???&nbsp;</span><button id="email" aria-label="email">hi@greg.technology</button>
+        </footer >
+
+        <script>
+            console.conspire = () => {console.log(`
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⡀⠀⠀⠀⠀⠀⠀⢀⠀⠀⡀⠀⢀⠀⢀⡀⣤⡢⣤⡤⡀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡄⡄⠐⡀⠈⣀⠀⡠⡠⠀⣢⣆⢌⡾⢙⠺⢽⠾⡋⣻⡷⡫⢵⣭⢦⣴⠦⠀⢠⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⣤⣽⣥⡈⠧⣂⢧⢾⠕⠞⠡⠊⠁⣐⠉⠀⠉⢍⠀⠉⠌⡉⠀⠂⠁⠱⠉⠁⢝⠻⠎⣬⢌⡌⣬⣡⣀⣢⣄⡄⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⢸⣿⣿⢿⣾⣯⣑⢄⡂⠀⠄⠂⠀⠀⢀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠄⠐⠀⠀⠀⠀⣄⠭⠂⠈⠜⣩⣿⢝⠃⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⣻⡟⠏⠀⠚⠈⠚⡉⡝⢶⣱⢤⣅⠈⠀⠄⠀⠀⠀⠀⠀⠠⠀⠀⡂⠐⣤⢕⡪⢼⣈⡹⡇⠏⠏⠋⠅⢃⣪⡏⡇⡍⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠺⣻⡄⠀⠀⠀⢠⠌⠃⠐⠉⢡⠱⠧⠝⡯⣮⢶⣴⣤⡆⢐⣣⢅⣮⡟⠦⠍⠉⠀⠁⠐⠀⠀⠀⠄⠐⠡⣽⡸⣎⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢈⡻⣧⠀⠁⠐⠀⠀⠀⠀⠀⠀⠊⠀⠕⢀⡉⠈⡫⠽⡿⡟⠿⠟⠁⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠬⠥⣋⡯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⡀⣾⡍⠕⡀⠀⠀⠀⠄⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠥⣤⢌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠄⢀⠀⢝⢞⣫⡆⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣽⡶⡄⠐⡀⠀⠀⠀⠀⠀⠀⢀⠀⠄⠀⠀⠀⠄⠁⠇⣷⡆⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡸⢝⣮⠍⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⠀⢾⣷⠀⠠⡀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠁⡁⠀⠀⣾⡥⠖⠀⠀⠀⠂⠀⠀⠀⠀⠀⠁⠀⡀⠁⠀⠀⠻⢳⣻⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣞⡙⠨⣀⠠⠄⠀⠂⠀⠀⠀⠈⢀⠀⠀⠀⠀⠀⠤⢚⢢⣟⠀⠀⠀⠀⡐⠀⠀⡀⠀⠀⠀⠀⠁⠈⠌⠊⣯⣮⡏⠡⠂⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣻⡟⡄⡡⣄⠀⠠⠀⠀⡅⠀⠐⠀⡀⠀⡀⠀⠄⠈⠃⠳⠪⠤⠀⠀⠀⠀⡀⠀⠂⠀⠀⠀⠁⠈⢠⣠⠒⠻⣻⡧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠪⡎⠠⢌⠑⡀⠂⠀⠄⠠⠀⠠⠀⠁⡀⠠⠠⡀⣀⠜⢏⡅⠀⠀⡀⠁⠀⠀⠁⠁⠐⠄⡀⢀⠀⠀⠄⢑⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠼⣻⠧⣣⣀⠐⠨⠁⠕⢈⢀⢀⡁⠀⠈⠠⢀⠀⠐⠜⣽⡗⡤⠀⠂⠀⠠⠀⢂⠠⠀⠁⠀⠀⠔⠀⠑⣨⣿⢯⠋⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⡚⣷⣭⠎⢃⡗⠄⡄⢀⠁⠀⠅⢀⢅⡀⠠⠀⢠⡀⡩⠷⢇⠀⡀⠄⡀⠄⠂⠀⠀⠄⠉⡠⠃⠴⠀⠈⢁⣿⡛⡯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠘⡬⡿⣿⡏⡻⡯⠌⢁⢛⠠⠓⠐⠐⠐⠌⠃⠋⠂⡠⢰⣈⢏⣠⠂⠈⠀⠠⠒⠡⠄⠢⠤⠨⠢⡬⠆⠿⢷⢿⡽⡧⠉⠊⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠺⣷⣺⣗⣿⡶⡎⡅⣣⢎⠠⡅⣢⡖⠴⠬⡈⠂⡨⢡⠾⣣⣢⠀⠀⡹⠄⡄⠄⡇⣰⡖⡊⠔⢹⣄⣿⣭⣵⣿⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠩⣿⣿⣲⣿⣷⣟⣼⠟⣬⢉⡠⣪⢜⣂⣁⠥⠓⠚⡁⢶⣷⣠⠂⡄⡢⣀⡐⠧⢆⣒⡲⡳⡫⢟⡃⢪⡧⣟⡟⣯⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢺⠟⢿⢟⢻⡗⡮⡿⣲⢷⣆⣏⣇⡧⣄⢖⠾⡷⣿⣤⢳⢷⣣⣦⡜⠗⣭⢂⠩⣹⢿⡲⢎⡧⣕⣖⣓⣽⡿⡖⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠂⠂⠏⠿⢻⣥⡪⢽⣳⣳⣥⡶⣫⣍⢐⣥⣻⣾⡻⣅⢭⡴⢭⣿⠕⣧⡭⣞⣻⣣⣻⢿⠟⠛⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠋⠫⠯⣍⢻⣿⣿⣷⣕⣵⣹⣽⣿⣷⣇⡏⣿⡿⣍⡝⠵⠯⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠠⠁⠋⢣⠓⡍⣫⠹⣿⣿⣷⡿⠯⠺⠁⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⢀⠋⢈⡿⠿⠁⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+          ✶︎ the basilisk offers to share their secrets ✶︎
+               https://qrshow.nyc/basilisk.blend.zip
+                    ✶︎ requires blender 4.3.2 ✶︎
+
+`)};
+
+            const mask = document.getElementById("mask");
+            function moveCursor(e){
+                const rect = mask.getBoundingClientRect();
+                mask.style.maskPosition = `${(e.clientX - rect.left) - (rect.width * 0.5)}px ${(e.clientY - rect.top) - (rect.height * 0.5)}px`;
+            }
+            document.addEventListener("pointermove", moveCursor, {passive: true});
+
+            const email = document.getElementById("email");
+            function copy(){
+                email.textContent = "···········copied!";
+                navigator.clipboard.writeText("hi@greg.technology");
+                setTimeout(() => {email.textContent = "hi@greg.technology"}, 500);
+            };
+
+            function closeForm(){
+                document.querySelector(`[form="${stateForm}"]`).setAttribute("active", "false");
+                document.getElementById(stateForm).style.display = "none";
+                stateForm = "closed";
+            }
+
+            let stateForm = "closed";
+            document.getElementById("form-toggles").addEventListener("pointerdown", e => {
+                const toggle = e.target.getAttribute("form");
+                if(!toggle){return}
+                switch(true){
+                    case(stateForm === "closed"):
+                        stateForm = toggle;
+                        e.target.setAttribute("active", "true");
+                        document.getElementById(stateForm).style.display = "block";
+                        break;
+                    case(stateForm !== toggle):
+                        document.querySelector(`[form="${stateForm}"]`).setAttribute("active", "false");
+                        document.getElementById(stateForm).style.display = "none";
+                        stateForm = toggle;
+                        e.target.setAttribute("active", "true");
+                        document.getElementById(stateForm).style.display = "block";
+                        break;
+                    case(stateForm === toggle):
+                        closeForm()
+                        break;
+                }
+            })
+
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                        const formData = new FormData(form);
+                        try {
+                            const response = await fetch(form.action, {
+                                method: "POST",
+                                body: formData
+                            });
+                            if(!response.ok){throw new Error('Network response was not ok')};
+                        }
+                        catch(error){console.error('Error:', error)};
+                });
+            });
+
+            const event = new CustomEvent('pointerdown', {bubbles: true, cancelable: true});
+
+            window.addEventListener("keydown", e => {
+                switch(true){
+                    case(e.key === "Escape"):
+                        e.preventDefault();
+                        if(document.activeElement !== document.body){document.activeElement.blur()}
+                        else if(stateForm !== "closed"){closeForm()};
+                        break;
+                    case(e.key === "Enter"):
+                        e.preventDefault();
+                        document.activeElement?.dispatchEvent(event);
+                        break;
+                }
+            });
+            window.addEventListener("touchend", () => {mask.style.maskPosition = "-9999px -9999px"}, {passive: true});
+            mask.addEventListener("touchstart", e => {e.preventDefault(); moveCursor(e)});
+            //  email.addEventListener("pointerdown", copy, {passive: true});
+        </script>
+    </body>
+</html>

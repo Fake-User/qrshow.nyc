@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "xdev": "bun run util/build.js && bun run dist/server.js",
+        "xserve": "bun run dist/server.js",
+        "xbuild": "bun run util/build.js"
+    }
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>qr show &#x2736;&#xFE0E; submissions</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <style>
+            @font-face{
+                src: url("ogcourier.woff2");
+                font-family: courier;
+            }
+            *::selection{
+                background-color: #fff;
+                color: #000;
+            }
+            a, a:visited{
+                color: #fff;
+            }
+            body{
+                overscroll-behavior: none;
+                width: max(900px, 100vw);
+                justify-content: center;
+                background-color: #000;
+                flex-direction: column;
+                box-sizing: border-box;
+                scrollbar-width: none;
+                font-family: courier;
+                align-items: center;
+                height: 100dvh;
+                padding: 20px;
+                display: flex;
+                color: #fff;
+                margin: 0;
+                gap: 20px;
+            }
+            #main{
+                grid-template-rows: 60px auto 1fr;
+                height: min(min-content, 100%);
+                border: 1px solid #fff;
+                display: grid;
+                width: 100%;
+            }
+            #query{
+                outline: none;
+                border: none;
+                border-bottom: 1px solid #fff;
+                background-color: #000;
+                font-family: courier;
+                font-size: 1rem;
+                padding: 0 20px;
+                color: #fff;
+
+                &::placeholder{
+                    color: #fff;
+                }
+            }
+            #row{
+                border-bottom: 1px solid #fff;
+                height: calc(41px + 10lh);
+                padding: 20px;
+                overflow-y: scroll;
+            }
+            #key, #res{
+                grid-template-columns: min-content repeat(10, 1fr);
+                grid-template-rows: 30px;
+                background-color: #fff;
+                white-space: nowrap;
+                line-height: 30px;
+                display: grid;
+                gap: 1px;
+
+                div{
+                    padding: 0px 8px;
+                    overflow-x: hidden;
+                }
+            }
+            #key{
+                color: #000;
+            }
+            #res{
+                border-bottom: 1px solid #fff;
+                overscroll-behavior: none;
+                height: min-content;
+                overflow-y: scroll;
+                max-height: 100%;
+                cursor: pointer;
+                width: 100%;
+
+                div{
+                    background-color: #000;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main"">
+            <input type="text" id="query" placeholder="sql statement" value="select * from submissions;">
+            <div id="row">nobody here ...</div>
+            <div id="key">
+                <div>id</div>
+                <div>name</div>
+                <div>role</div>
+                <div>email</div>
+                <div>link</div>
+                <div>medium</div>
+                <div>title</div>
+                <div>category</div>
+                <div>author</div>
+                <div>note</div>
+                <div>date</div>
+            </div>
+            <div id="res"></div>
+        </div>
+        <script src="sqlite3.js"></script>
+        <script>
+            const elementQuery = document.getElementById("query");
+            const elementRow = document.getElementById("row");
+            const elementRes = document.getElementById("res");
+            let resArray = [];
+
+            function dbSetup(){
+                function initdb(buffer){
+                    db = new sqlite3.oo1.DB();
+                    sqlite3.capi.sqlite3_deserialize(
+                        db.pointer, 'main',
+                        sqlite3.wasm.allocFromTypedArray(buffer),
+                        buffer.byteLength,
+                        buffer.byteLength,
+                        sqlite3.capi.SQLITE_DESERIALIZE_FREEONCLOSE
+                    );
+                    dbExec();
+                };
+                fetch(`${window.location.pathname}/store/demo.sqlite`)
+                .then(res => res.arrayBuffer())
+                .then(buffer => {initdb(buffer)})
+            };
+
+            sqlite3InitModule().then(function(sqlite3){
+                window.sqlite3 = sqlite3;
+                dbSetup();
+            });
+
+            async function dbExec(){
+                let result = "";
+                resArray = [];
+                let query = elementQuery.value;
+                if(query == ""){query = "select * from submissions;"}
+                db.exec({
+                    sql: query,
+                    rowMode: 'object',
+                    callback: function(row){
+                        resArray.push(row);
+                        result += `
+                            <div row="${row.id}">${row.id}</div>
+                            <div row="${row.id}">${row.name}</div>
+                            <div row="${row.id}">${row.role}</div>
+                            <div row="${row.id}">${row.email}</div>
+                            <div row="${row.id}">${row.link}</div>
+                            <div row="${row.id}">${row.medium}</div>
+                            <div row="${row.id}">${row.title}</div>
+                            <div row="${row.id}">${row.category}</div>
+                            <div row="${row.id}">${row.author}</div>
+                            <div row="${row.id}">${row.notes}</div>
+                            <div row="${row.id}">${row.date}</div>
+                        `;
+                    }
+                });
+
+                elementRes.innerHTML = result;
+                window.addEventListener("pointerdown", e => {
+                    if(e.target.hasAttribute("row")){
+                        let row = resArray[parseInt(e.target.getAttribute("row")) - 1]
+                        elementRow.innerHTML = `
+                            id: ${row.id}<br aria-hidden="true">
+                            name: ${row.name}<br aria-hidden="true">
+                            role: ${row.role}<br aria-hidden="true">
+                            email: ${row.email}<br aria-hidden="true">
+                            link: ${row.link !== '-' ? '<a href="' + row.link + '" target="_blanke">' + row.link + '</a>' : '-'}<br aria-hidden="true">
+                            medium: ${row.medium}<br aria-hidden="true">
+                            title: ${row.title}<br aria-hidden="true">
+                            category: ${row.category}<br aria-hidden="true">
+                            author: ${row.author}<br aria-hidden="true">
+                            notes: ${row.notes}<br aria-hidden="true">
+                            date: ${row.date}<br aria-hidden="true">
+                        `;
+                    }
+                })
+            };
+
+            window.addEventListener("keydown", e => {if(e.key === "Enter"){dbExec()}});
+        </script>
+    </body>
+</html>

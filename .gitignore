@@ -1,0 +1,4 @@
+/util/temp
+.DS_Store
+/dist
+.env
