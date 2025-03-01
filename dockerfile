@@ -4,9 +4,8 @@ COPY . .
 RUN bun run xbuild
 
 FROM oven/bun:1
-WORKDIR /app
+WORKDIR /dist
 COPY --from=builder /build/dist/ ./
-RUN mkdir -p /store
-VOLUME /store
+VOLUME /dist/store
 EXPOSE 3000
 CMD ["bun", "run", "server.js"]

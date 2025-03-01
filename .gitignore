@@ -1,4 +1,5 @@
 /util/temp
 .DS_Store
+/store
 /dist
 .env
