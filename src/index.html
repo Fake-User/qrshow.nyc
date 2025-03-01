@@ -170,16 +170,10 @@
                 cursor: text;
                 margin: 0;
             }
-            #email, a{
-                all: unset;
-                transition: background-color 0.5s ease, color 0.5s ease;
-                text-align: right;
-                cursor: pointer;
-                width: 18ch;
-            }
+
 
             @media(hover){
-                button:focus-visible, button:hover, #email:focus-visible, #email:hover{
+                button:focus-visible, button:hover{
                     transition: background-color 0s, color 0s;
                     background-color: #fff;
                     color: #000;
