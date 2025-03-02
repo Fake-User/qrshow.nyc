@@ -210,9 +210,9 @@
 
         <section id="forms" aria-label="forms">
             <div id="form-toggles" role="tablist" aria-label="form selection">
-                <button class="form-toggle" form="submissions" active="false" role="tab" aria-controls="submissions"><span>[</span>&nbsp;submissions&nbsp;<span>]</span></button>
-                <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer"><span>[</span>&nbsp;volunteer&nbsp;<span>]</span></button>
-                <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets"><span>[</span>&nbsp;tickets&nbsp;<span>]</span></button>
+                <button class="form-toggle" form="submissions" active="false" role="tab" aria-controls="submissions"><span aria-hidden="true">[</span>&nbsp;submissions&nbsp;<span aria-hidden="true">]</span></button>
+                <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer"><span aria-hidden="true">[</span>&nbsp;volunteer&nbsp;<span aria-hidden="true">]</span></button>
+                <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets"><span aria-hidden="true">[</span>&nbsp;tickets&nbsp;<span aria-hidden="true">]</span></button>
             </div>
             <div id="submissions" class="form" role="tabpanel">
                 qr show is an exhibition hosted at the recurse center. it features many, any, & all things "qr code" including:
@@ -229,9 +229,9 @@
                     <li>devices that generate / consume qr codes</li>
                     <li>qr codes made out of ...? moss?</li>
                 </ul>
-                does your submission have to be your own work?<br ari-hidden="true"><br ari-hidden="true">
-                <div style="padding: 0 20px;">you are allowed to propose other peoples projects. please provide their email so we reach out.</div><br ari-hidden="true">
-                <div style="text-align: center;">submissions&nbsp;close:<br aria-hidden="true">03.07.25&nbsp;-&nbsp;23:59:59&nbsp;est</div><hr>
+                does your submission have to be your own work?<br aria-hidden="true"><br aria-hidden="true">
+                <div style="padding: 0 20px;">you are allowed to propose other peoples projects. please provide their email so we reach out.</div><br aria-hidden="true">
+                <div style="text-align: center;">submissions&nbsp;close:<br aria-hidden="true">03.07.25&nbsp;-&nbsp;23:59:59&nbsp;est</div><hr aria-hidden="true">
                 <form action="/submit" method="post">
                     <input type="hidden" name="role" value="submission">
                     <div>submission category:</div><div>
@@ -240,34 +240,34 @@
                         <div class="radio-option"><input class="input-box" type="radio" name="category" value="payload" required><label for="payload">payload</label></div>
                         <div class="radio-option"><input class="input-box" type="radio" name="category" value="history" required><label for="history">history</label></div>
                         <div class="radio-option"><input class="input-box" type="radio" name="category" value="art" required><label for="art">art</label></div>
-                    </div><hr class="dashed">
-                    <input class="input-text" type="text" name="medium" maxlength="64" placeholder="medium (printed, projected, ...):" required><hr class="dashed">
-                    <input class="input-text" type="email" name="author" maxlength="254" placeholder="author email (if applicable):"><hr class="dashed">
-                    <input class="input-text" type="text" name="title" maxlength="512" placeholder="submission title:" required><hr class="dashed">
-                    <input class="input-text" type="url" name="link" maxlength="512" placeholder="submission link:" required><hr class="dashed">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr class="dashed">
-                    <input class="input-text" type="text" name="notes" maxlength="512" placeholder="notes (optional):"><hr>
+                    </div><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="medium" maxlength="64" placeholder="medium (printed, projected, ...):" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="email" name="author" maxlength="254" placeholder="author email (if applicable):"><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="title" maxlength="512" placeholder="submission title:" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="url" name="link" maxlength="512" placeholder="submission link:" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="notes" maxlength="512" placeholder="notes (optional):"><hr aria-hidden="true">
                     <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
                 </form>
             </div>
 
             <div id="volunteer" class="form" role="tabpanel">
-                feel like pitching in? we could maybe use a few folks to help set up and clean up.<hr>
+                feel like pitching in? we could maybe use a few folks to help set up and clean up.<hr aria-hidden="true">
                 <form action="/submit" method="post">
                     <input type="hidden" name="role" value="volunteer">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr>
+                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr aria-hidden="true">
                     <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
                 </form>
             </div>
 
             <div id="tickets" class="form" role="tabpanel">
-                qr show is a public event, just pull up. if you want a fun email, we could send you a fun email.<hr>
+                qr show is a public event, just pull up. if you want a fun email, we could send you a fun email.<hr aria-hidden="true">
                 <form action="/submit" method="post">
                     <input type="hidden" name="role" value="pullup">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr>
+                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr aria-hidden="true">
                     <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
                 </form>
             </div>
@@ -276,7 +276,7 @@
         <footer aria-label="event details and contact information.">
             qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc<br aria-hidden="true">
             <button id="address" aria-label="address">397&nbsp;bridge&nbsp;street&nbsp;brooklyn</button><br aria-hidden="true">
-            <span aria-hidden="true">???&nbsp;</span><button id="email" aria-label="email">hi@greg.technology</button>
+            <button id="email" aria-label="email"><span aria-hidden="true">???&nbsp;</span>hi@greg.technology</button>
         </footer >
 
         <script>
@@ -300,9 +300,9 @@
             };
 
             function copyEmail(){
-                elementEmail.textContent = "···········copied!";
+                elementEmail.innerHTML = "···············copied!";
                 navigator.clipboard.writeText("hi@greg.technology");
-                setTimeout(() => {email.textContent = "hi@greg.technology"}, 500);
+                setTimeout(() => {email.innerHTML = `<span aria-hidden="true">???&nbsp;</span>hi@greg.technology`}, 500);
             };
 
             function formClose(){
