@@ -132,7 +132,7 @@
                     );
                     dbExec();
                 };
-                fetch(`${window.location.pathname}/store/demo.sqlite`)
+                fetch(`${window.location.pathname}/store/db.sqlite`)
                 .then(res => res.arrayBuffer())
                 .then(buffer => {initdb(buffer)})
             };

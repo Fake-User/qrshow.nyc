@@ -1,6 +1,6 @@
 import { Database } from "bun:sqlite";
 import { S3Client, file} from "bun";
-const dbPath = `${process.env.STORE}/demo.sqlite`;
+const dbPath = `${process.env.STORE}/db.sqlite`;
 
 /* db */
 const db = new Database(dbPath);
@@ -71,7 +71,7 @@ const server = Bun.serve({
         if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
-        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(dbPath), {headers: {"Content-Type": "application/x-sqlite"}})};
+        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/db.sqlite`){return new Response(Bun.file(dbPath), {headers: {"Content-Type": "application/x-sqlite"}})};
         if(path === "/r/ff0033ff"){return Response.redirect("https://www.julianrosefeldt.com/film-and-video-works/manifesto-_2014-2015/", 302)};
         if(path === "/r/da70d6ff"){return Response.redirect("https://www.youtube.com/watch?v=MzkmcVQTPE0", 302)};
         if(path === "/r/663399ff"){return Response.redirect("http://astronaut.io/", 302)};
