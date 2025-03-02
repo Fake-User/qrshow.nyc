@@ -72,9 +72,9 @@ const server = Bun.serve({
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(`${process.env.STORE}/demo.sqlite`), {headers: {"Content-Type": "application/x-sqlite"}})};
-        if(path === "/r/julianrosefeldt"){return Response.redirect("https://www.julianrosefeldt.com/film-and-video-works/manifesto-_2014-2015/", 302)};
-        if(path === "/r/quecalor"){return Response.redirect("https://www.youtube.com/watch?v=MzkmcVQTPE0", 302)};
-        if(path === "/r/astronaut"){return Response.redirect("http://astronaut.io/", 302)};
+        if(path === "/r/ff0033ff"){return Response.redirect("https://www.julianrosefeldt.com/film-and-video-works/manifesto-_2014-2015/", 302)};
+        if(path === "/r/da70d6ff"){return Response.redirect("https://www.youtube.com/watch?v=MzkmcVQTPE0", 302)};
+        if(path === "/r/663399ff"){return Response.redirect("http://astronaut.io/", 302)};
         return new Response("error", {status: 404});
     },
 });
