@@ -195,6 +195,11 @@
                     padding: 0px;
                 }
             }
+            @media(max-width: calc(46ch +  40px)){
+                #form-toggles button span{
+                    display: none;
+                }
+            }
         </style>
     </head>
     <body>
@@ -205,9 +210,9 @@
 
         <section id="forms" aria-label="forms">
             <div id="form-toggles" role="tablist" aria-label="form selection">
-                <button class="form-toggle" form="submissions" active="false" role="tab" aria-controls="submissions">[&nbsp;submissions&nbsp;]</button>
-                <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer">[&nbsp;volunteer&nbsp;]</button>
-                <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets">[&nbsp;tickets&nbsp;]</button>
+                <button class="form-toggle" form="submissions" active="false" role="tab" aria-controls="submissions"><span>[</span>&nbsp;submissions&nbsp;<span>]</span></button>
+                <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer"><span>[</span>&nbsp;volunteer&nbsp;<span>]</span></button>
+                <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets"><span>[</span>&nbsp;tickets&nbsp;<span>]</span></button>
             </div>
             <div id="submissions" class="form" role="tabpanel">
                 qr show is an exhibition hosted at the recurse center. it features many, any, & all things "qr code" including:
