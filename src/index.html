@@ -48,6 +48,7 @@
                 gap: 20px;
             }
             button{
+                unset: all;
                 transition: background-color 0.5s, color 0.5s;
                 font-family: courier;
                 padding: 0px 4px;
@@ -58,7 +59,75 @@
                 border: none;
                 color: #fff;
             }
+            hr{
+                border: none;
+                transform: translateX(-20px);
+                border-top: 1px solid #fff;
+                width: calc(100% + 40px);
+                box-sizing: border-box;
+                margin: 20px 0;
+            }
+            ul{
+                list-style-type: "> ";
+            }
+            input[type="radio"], input[type="checkbox"]{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                transition: border 0.5s ease;
+                border: 1px solid #fff;
+                background-color: #000;
+                border-radius: 0;
+                cursor: pointer;
+                outline: none;
+                padding: 4px;
+                height: 16px;
+                width: 16px;
 
+                &:checked{
+                    background-color: #fff;
+                }
+            }
+            input[type="text"], input[type="email"], input[type="url"]{
+                box-sizing: border-box;
+                font-family: courier;
+                background: #0000;
+                font-size: 1rem;
+                outline: none;
+                border: none;
+                color: #fff;
+                width: 100%;
+
+                &::placeholder{
+                    color: #fff;
+                }
+            }
+            .form-toggle{
+                transition: flex-grow 0.5s ease;
+
+                &[active="true"]{
+                    transition: background-color 0s, color 0s, flex-grow 0.5s ease;
+                    background-color: #fff;
+                    flex-grow: 1;
+                    color: #000;
+                }
+            }
+            .form{
+                width: min(38rem, 100%);
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                cursor: default;
+                display: none;
+                padding: 20px;
+            }
+            .dashed{
+                border-top: 1px dashed #fff;
+            }
+            .radio-option{
+                align-items: center;
+                display: flex;
+                gap: 4px;
+            }
             #image-wrapper{
                 width: min(38rem, 100vw);
                 aspect-ratio: 1 / 1;
@@ -99,81 +168,16 @@
                 cursor: pointer;
                 display: flex;
             }
-            .form-toggle{
-                transition: flex-grow 0.5s ease;
-
-                &[active="true"]{
-                    transition: background-color 0s, color 0s, flex-grow 0.5s ease;
-                    background-color: #fff;
-                    flex-grow: 1;
-                    color: #000;
-                }
-            }
-            .form{
-                width: min(38rem, 100%);
-                box-sizing: border-box;
-                border: 1px solid #fff;
-                cursor: default;
-                display: none;
-                padding: 20px;
-            }
-            hr{
-                border: none;
-                transform: translateX(-20px);
-                border-top: 1px solid #fff;
-                width: calc(100% + 40px);
-                box-sizing: border-box;
-                margin: 20px 0;
-            }
-            ul{
-                list-style-type: "> ";
-            }
-            .dashed{
-                border-top: 1px dashed #fff;
-            }
-            input[type="text"], input[type="email"], input[type="url"]{
-                box-sizing: border-box;
-                font-family: courier;
-                background: #0000;
-                font-size: 1rem;
-                outline: none;
-                border: none;
-                color: #fff;
-                width: 100%;
-
-                &::placeholder{
-                    color: #fff;
-                }
-            }
-            .radio-option{
-                align-items: center;
-                display: flex;
-                gap: 4px;
-            }
-            input[type="radio"], input[type="checkbox"]{
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                border: 1px solid #fff;
-                background-color: #000;
-                border-radius: 0;
-                cursor: pointer;
-                padding: 4px;
-                height: 16px;
-                width: 16px;
-
-                &:checked{
-                    background-color: #fff;
-                }
-            }
-
             #text{
                 text-align: center;
                 cursor: text;
                 margin: 0;
             }
-
             @media(hover){
+                input[type="radio"]:focus-visible, input[type="checkbox"]:focus-visible, input[type="radio"]:hover, input[type="checkbox"]:hover{
+                    transition: border 0s;
+                    border: 4px solid #fff;
+                }
                 button:focus-visible, button:hover{
                     transition: background-color 0s, color 0s;
                     background-color: #fff;
@@ -184,7 +188,6 @@
                     flex-grow: 1;
                 }
             }
-
             @media(max-aspect-ratio: 1/1){
                 #form-toggles button{
                     padding: 0px;
@@ -268,6 +271,12 @@
         </footer >
 
         <script>
+            const event = new CustomEvent('pointerdown', {bubbles: true, cancelable: true});
+            const address = document.getElementById("address");
+            const email = document.getElementById("email");
+            const mask = document.getElementById("mask");
+            let stateForm = "closed";
+
             console.conspire = () => {console.log(`
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⡀⠀⠀⠀⠀⠀⠀⢀⠀⠀⡀⠀⢀⠀⢀⡀⣤⡢⣤⡤⡀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡄⡄⠐⡀⠈⣀⠀⡠⡠⠀⣢⣆⢌⡾⢙⠺⢽⠾⡋⣻⡷⡫⢵⣭⢦⣴⠦⠀⢠⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -299,21 +308,17 @@
 
 `)};
 
-            const mask = document.getElementById("mask");
             function moveCursor(e){
                 const rect = mask.getBoundingClientRect();
                 mask.style.maskPosition = `${(e.clientX - rect.left) - (rect.width * 0.5)}px ${(e.clientY - rect.top) - (rect.height * 0.5)}px`;
             }
-            document.addEventListener("pointermove", moveCursor, {passive: true});
 
-            const email = document.getElementById("email");
             function copy(){
                 email.textContent = "···········copied!";
                 navigator.clipboard.writeText("hi@greg.technology");
                 setTimeout(() => {email.textContent = "hi@greg.technology"}, 500);
             };
 
-            const address = document.getElementById("address");
             function openMaps(){
                 window.location.href='maps:q=397+Bridge+Street+Brooklyn+New+York';
             };
@@ -324,7 +329,6 @@
                 stateForm = "closed";
             }
 
-            let stateForm = "closed";
             document.getElementById("form-toggles").addEventListener("pointerdown", e => {
                 const toggle = e.target.getAttribute("form");
                 if(!toggle){return}
@@ -344,8 +348,8 @@
                     case(stateForm === toggle):
                         closeForm()
                         break;
-                }
-            })
+                };
+            });
 
             document.querySelectorAll('form').forEach(form => {
                 form.addEventListener('submit', async (e) => {
@@ -367,9 +371,6 @@
                 });
             });
 
-            const event = new CustomEvent('pointerdown', {bubbles: true, cancelable: true});
-
-
             window.addEventListener("keydown", e => {
                 switch(true){
                     case(e.key === "Escape"):
@@ -381,10 +382,12 @@
                         e.preventDefault();
                         document.activeElement?.dispatchEvent(event);
                         break;
-                }
+                };
             });
+
             window.addEventListener("touchend", () => {mask.style.maskPosition = "-9999px -9999px"}, {passive: true});
             mask.addEventListener("touchstart", e => {e.preventDefault(); moveCursor(e)});
+            window.addEventListener("pointermove", moveCursor, {passive: true});
             address.addEventListener("pointerdown", openMaps, {passive: true});
             email.addEventListener("pointerdown", copy, {passive: true});
         </script>
