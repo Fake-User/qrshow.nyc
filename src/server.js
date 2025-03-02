@@ -56,7 +56,7 @@ const server = Bun.serve({
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/demo.sqlite`){return new Response(Bun.file(`${process.env.STORE}/demo.sqlite`), {headers: {"Content-Type": "application/x-sqlite"}})};
-        if(path === "/julianrosefeldt "){return Response.redirect("https://www.julianrosefeldt.com/film-and-video-works/manifesto-_2014-2015/", 302)};
+        if(path === "/julianrosefeldt"){return Response.redirect("https://www.julianrosefeldt.com/film-and-video-works/manifesto-_2014-2015/", 302)};
         if(path === "/quecalor"){return Response.redirect("https://www.youtube.com/watch?v=MzkmcVQTPE0", 302)};
         if(path === "/astronaut"){return Response.redirect("http://astronaut.io/", 302)};
         return new Response("error", {status: 404});
