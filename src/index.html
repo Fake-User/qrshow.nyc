@@ -75,6 +75,30 @@
                 cursor: text;
             }
 
+            .form-toggle{
+                transition: flex-grow 0.5s ease;
+                will-change: flex-grow;
+
+                &[active="true"]{
+                    transition: background-color 0s, color 0s, flex-grow 0.5s ease;
+                    background-color: #fff;
+                    flex-grow: 1;
+                    color: #000;
+                }
+            }
+            .form{
+                width: min(38rem, 100%);
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                cursor: default;
+                display: none;
+                padding: 20px;
+            }
+            .radio-option{
+                align-items: center;
+                display: flex;
+                gap: 4px;
+            }
             .input-box{
                 transition: background-color 0.5s ease, border 0.5s ease;
                 border: 1px solid #fff;
@@ -105,32 +129,8 @@
                     color: #fff;
                 }
             }
-            .form-toggle{
-                transition: flex-grow 0.5s ease;
-                will-change: flex-grow;
-
-                &[active="true"]{
-                    transition: background-color 0s, color 0s, flex-grow 0.5s ease;
-                    background-color: #fff;
-                    flex-grow: 1;
-                    color: #000;
-                }
-            }
-            .form{
-                width: min(38rem, 100%);
-                box-sizing: border-box;
-                border: 1px solid #fff;
-                cursor: default;
-                display: none;
-                padding: 20px;
-            }
             .dashed{
                 border-top: 1px dashed #fff;
-            }
-            .radio-option{
-                align-items: center;
-                display: flex;
-                gap: 4px;
             }
 
             #image-wrapper{
