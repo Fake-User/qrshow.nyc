@@ -52,7 +52,6 @@ async function backup(){
     await client.write(`backup-${timestamp}.sqlite`, file(`${process.env.STORE}/demo.sqlite`))
 };
 setInterval(backup, 1800000); /* 30min */
-await backup();
 
 /* files */
 const fileSubmissions = Bun.file(`./submissions.html`);
