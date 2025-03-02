@@ -1,5 +1,7 @@
-/* db */
 import { Database } from "bun:sqlite";
+import { S3Client, file} from "bun";
+
+/* db */
 const db = new Database(`${process.env.STORE}/demo.sqlite`);
 db.run(`
     CREATE TABLE IF NOT EXISTS submissions (
@@ -37,6 +39,20 @@ async function dbInsert(req){
         return new Response("error", {status: 400});
     };
 };
+
+/* backup */
+const client = new S3Client({
+    accessKeyId: process.env.R2_KEY,
+    secretAccessKey: process.env.R2_SECRET,
+    bucket: "qrshow-backup",
+    endpoint: `https://${process.env.R2_ACCOUNT}.r2.cloudflarestorage.com`,
+});
+async function backup(){
+    const timestamp = new Date().toISOString()
+    await client.write(`backup-${timestamp}.sqlite`, file(`${process.env.STORE}/demo.sqlite`))
+};
+setInterval(backup, 1800000); /* 30min */
+await backup();
 
 /* files */
 const fileSubmissions = Bun.file(`./submissions.html`);
