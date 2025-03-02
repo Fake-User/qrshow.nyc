@@ -112,6 +112,7 @@
                 width: 16px;
 
                 &:checked{
+                    transition: background-color 0s;
                     background-color: #fff;
                 }
             }
@@ -185,8 +186,8 @@
                     flex-grow: 1;
                 }
                 .input-box:focus-visible, .input-box:hover{
-                    transition: background-color 0s, border 0s;
                     border: 4px solid #fff;
+                    transition: border 0s;
                 }
             }
             @media(max-aspect-ratio: 1 / 1){
