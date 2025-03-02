@@ -311,7 +311,7 @@
             function moveCursor(e){
                 const rect = mask.getBoundingClientRect();
                 mask.style.maskPosition = `${(e.clientX - rect.left) - (rect.width * 0.5)}px ${(e.clientY - rect.top) - (rect.height * 0.5)}px`;
-            }
+            };
 
             function copy(){
                 email.textContent = "···········copied!";
