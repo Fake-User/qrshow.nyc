@@ -71,7 +71,6 @@ const server = Bun.serve({
         /* main */
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/" || path === "/index.html"){return new Response(fileIndex, {headers: {"Content-Type": "text/html"}})};
-        if(path === "/escape"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
         if(path === "/submit" && req.method === "POST"){return dbInsert(req)};
 
         /* files */
@@ -85,7 +84,7 @@ const server = Bun.serve({
         if(path === "/r/DDA0DD"){return Response.redirect("https://homage.pareinoiddelusion.com/", 302)}; /* peter */
         if(path === "/r/0d5012ff"){return Response.redirect("http://ahg.lol/", 302)}; /* gelmbo */
         if(path === "/r/591212"){return Response.redirect("https://edge.destruct.dev", 302)}; /* self.destruct.dev */
-        if(path === "/r/abcdfeff"){return Response.redirect("https://edge.destruct.dev", 302)}; /* self.destruct.dev */
+        if(path === "/r/666666"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
 
         /* locked */
         return new Response("error", {status: 404});
