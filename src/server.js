@@ -78,6 +78,7 @@ const server = Bun.serve({
         if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
 
+        /* redirects */
         if(path === "/r/000000" || path === "/r/da70d6ff" || path === "/r/663399ff" || path === "/r/4b0082ff" || path === "/r/ff7f50ff" || path === "/r/ff6347ff"){return Response.redirect("https://self.destruct.dev", 302)}; /* self */
         if(path === "/r/777777"){return Response.redirect("http://guywith.dog/", 302)}; /* boy with dog */
         if(path === "/r/ff0033ff"){return Response.redirect("https://fridgepoem.com/#x=314159&y=271828", 302)}; /* sam */
@@ -86,7 +87,6 @@ const server = Bun.serve({
         if(path === "/r/591212"){return Response.redirect("https://edge.destruct.dev", 302)}; /* self.destruct.dev */
         if(path === "/r/666666"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
 
-        /* locked */
         return new Response("error", {status: 404});
     }
 });

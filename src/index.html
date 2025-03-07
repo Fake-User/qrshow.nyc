@@ -214,61 +214,61 @@
                 <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer"><span aria-hidden="true">[</span>&nbsp;volunteer&nbsp;<span aria-hidden="true">]</span></button>
                 <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets"><span aria-hidden="true">[</span>&nbsp;tickets&nbsp;<span aria-hidden="true">]</span></button>
             </div>
-            <div id="submissions" class="form" role="tabpanel">
+            <div id="submissions" class="form" role="tabpanel" aria-label="submissions">
                 qr show is an exhibition hosted at the recurse center. it features many, any, & all things "qr code" including:
-                <ul>
+                <ul aria-label="submission categories">
                     <li>protocols: technical deep dives & exploits</li>
                     <li>history: predecessors, competitors, & lore</li>
                     <li>payloads: data inside qr codes</li>
                     <li>art: aesthetic indulgence</li>
                 </ul>
                 we are currently accepting submissions. what kinds? all kinds! (besides inappropriate ones) for example:
-                <ul>
+                <ul aria-label="submission examples">
                     <li>qr codes that cause hiccups & <del>incite&nbsp;violence</del> laughter</li>
                     <li>collections of qr codes found in the wild</li>
                     <li>devices that generate / consume qr codes</li>
                     <li>qr codes made out of ...? moss?</li>
                 </ul>
                 does your submission have to be your own work?<br aria-hidden="true"><br aria-hidden="true">
-                <div style="padding: 0 20px;">you are allowed to propose other peoples projects. please provide their email so we reach out.</div><br aria-hidden="true">
-                <div style="text-align: center;">submissions&nbsp;close:<br aria-hidden="true">03.09.25&nbsp;-&nbsp;23:59:59&nbsp;est</div><hr aria-hidden="true">
-                <form action="/submit" method="post">
+                <div style="padding: 0 20px;" role="none">you are allowed to propose other peoples projects. please provide their email so we reach out.</div><br aria-hidden="true">
+                <div style="text-align: center;" role="none">submissions&nbsp;close:<br aria-hidden="true">03.09.25&nbsp;-&nbsp;23:59:59&nbsp;est</div><hr aria-hidden="true">
+                <form action="/submit" method="post" aria-label="submissions form">
                     <input type="hidden" name="role" value="submission">
-                    <div>submission category:</div><div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" value="other" required><label for="other">transcends categorization</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" value="protocol" required><label for="protocol">protocol</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" value="payload" required><label for="payload">payload</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" value="history" required><label for="history">history</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" value="art" required><label for="art">art</label></div>
+                    <div aria-hidden="true">submission category:</div><div aria-label="submission category">
+                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="other" required><label for="other">transcends categorization</label></div>
+                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="protocol" required><label for="protocol">protocol</label></div>
+                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="payload" required><label for="payload">payload</label></div>
+                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="history" required><label for="history">history</label></div>
+                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="art" required><label for="art">art</label></div>
                     </div><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="medium" maxlength="64" placeholder="medium (printed, projected, ...):" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="email" name="author" maxlength="254" placeholder="author email (if applicable):"><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="title" maxlength="512" placeholder="submission title:" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="url" name="link" maxlength="512" placeholder="submission link:" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="notes" maxlength="512" placeholder="notes (optional):"><hr aria-hidden="true">
-                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
+                    <input class="input-text" type="text" name="medium" maxlength="64" placeholder="medium (printed, projected, etc):" aria-label="medium (printed, projected, etc)" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="email" name="author" maxlength="254" placeholder="author email (if applicable):" aria-label="author email"><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="title" maxlength="512" placeholder="submission title:" aria-label="submission title" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="url" name="link" maxlength="512" placeholder="submission link:" aria-label="submission link" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" aria-label="email" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" aria-label="name" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="notes" maxlength="512" placeholder="notes (optional):" aria-label="notes"><hr aria-hidden="true">
+                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;submit&nbsp;]</button></div>
                 </form>
             </div>
 
-            <div id="volunteer" class="form" role="tabpanel">
+            <div id="volunteer" class="form" role="tabpanel" aria-label="volunteer">
                 feel like pitching in? we could maybe use a few folks to help set up and clean up.<hr aria-hidden="true">
-                <form action="/submit" method="post">
+                <form action="/submit" method="post" aria-label="volunteer form">
                     <input type="hidden" name="role" value="volunteer">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr aria-hidden="true">
-                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
+                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" aria-label="email" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" aria-label="name" required><hr aria-hidden="true">
+                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;submit&nbsp;]</button></div>
                 </form>
             </div>
 
-            <div id="tickets" class="form" role="tabpanel">
+            <div id="tickets" class="form" role="tabpanel" aria-label="tickets">
                 qr show is a public event, just pull up. if you want a fun email, we could send you a fun email.<hr aria-hidden="true">
-                <form action="/submit" method="post">
+                <form action="/submit" method="post" aria-label="tickets form">
                     <input type="hidden" name="role" value="pullup">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" required><hr aria-hidden="true">
-                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit">[&nbsp;submit&nbsp;]</button></div>
+                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" aria-label="email" required><hr class="dashed" aria-hidden="true">
+                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" aria-label="name" required><hr aria-hidden="true">
+                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;submit&nbsp;]</button></div>
                 </form>
             </div>
         </section>
