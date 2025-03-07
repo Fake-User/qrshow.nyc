@@ -82,8 +82,9 @@ const server = Bun.serve({
         if(path === "/r/000000" || path === "/r/da70d6ff" || path === "/r/663399ff" || path === "/r/4b0082ff" || path === "/r/ff7f50ff" || path === "/r/ff6347ff"){return Response.redirect("https://self.destruct.dev", 302)}; /* self 777777 */
         if(path === "/r/777777"){return Response.redirect("http://ahg.lol/", 302)}; /* gelmbo 591212 */
         if(path === "/r/591212"){return Response.redirect("https://edge.destruct.dev", 302)}; /* self.destruct.dev 666666 */
-        if(path === "/r/666666"){return Response.redirect("https://fridgepoem.com/#x=314159&y=271828", 302)}; /* sam DDA0DD*/
-        if(path === "/r/DDA0DD"){return Response.redirect("https://homage.pareinoiddelusion.com/", 302)}; /* peter 0d5012ff */
+        if(path === "/r/666666"){return Response.redirect("https://fridgepoem.com/#x=314159&y=271828", 302)}; /* sam DDA0DD */
+        if(path === "/r/DDA0DD"){return Response.redirect("https://www.devmandan.com/", 302)}; /* dan 013373 */
+        if(path === "/r/013373"){return Response.redirect("https://homage.pareinoiddelusion.com/", 302)}; /* peter 0d5012ff */
         if(path === "/r/0d5012ff"){return Response.redirect("http://guywith.dog/", 302)}; /* quy with dog ff0033ff */
         if(path === "/r/ff0033ff"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
 
