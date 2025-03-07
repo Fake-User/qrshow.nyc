@@ -58,25 +58,38 @@ setInterval(backup, 1800000); /* 30min */
 const fileSubmissions = Bun.file(`./submissions.html`);
 const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
 const fileSqlite3Wasm = Bun.file(`./sqlite3.wasm`);
+const fileEscape = Bun.file(`./escape.html`);
 const fileIndex = Bun.file(`./index.html`);
 
 /* routes */
 const server = Bun.serve({
     port: 3000,
-    async fetch(req) {
+    async fetch(req){
         const url = new URL(req.url);
         const path = url.pathname;
-        if(path === "/" || path === "/index.html"){return new Response(fileIndex, {headers: {"Content-Type": "text/html"}})};
-        if(path === "/submit" && req.method === "POST"){return dbInsert(req)};
-        if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
+
+        /* main */
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
-        if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
+        if(path === "/" || path === "/index.html"){return new Response(fileIndex, {headers: {"Content-Type": "text/html"}})};
+        if(path === "/escape"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
+        if(path === "/submit" && req.method === "POST"){return dbInsert(req)};
+
+        /* files */
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/db.sqlite`){return new Response(Bun.file(dbPath), {headers: {"Content-Type": "application/x-sqlite"}})};
-        if(path === "/r/ff0033ff"){return Response.redirect("https://fridgepoem.com/#x=314159&y=271828", 302)};
-        if(path === "/r/da70d6ff"){return Response.redirect("https://www.youtube.com/watch?v=MzkmcVQTPE0", 302)};
-        if(path === "/r/663399ff"){return Response.redirect("http://astronaut.io/", 302)};
+        if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
+        if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
+
+        if(path === "/r/000000" || path === "/r/da70d6ff" || path === "/r/663399ff" || path === "/r/4b0082ff" || path === "/r/ff7f50ff" || path === "/r/ff6347ff"){return Response.redirect("https://self.destruct.dev", 302)}; /* self */
+        if(path === "/r/777777"){return Response.redirect("http://guywith.dog/", 302)}; /* boy with dog */
+        if(path === "/r/ff0033ff"){return Response.redirect("https://fridgepoem.com/#x=314159&y=271828", 302)}; /* sam */
+        if(path === "/r/DDA0DD"){return Response.redirect("https://homage.pareinoiddelusion.com/", 302)}; /* peter */
+        if(path === "/r/0d5012ff"){return Response.redirect("http://ahg.lol/", 302)}; /* gelmbo */
+        if(path === "/r/591212"){return Response.redirect("https://edge.destruct.dev", 302)}; /* self.destruct.dev */
+        if(path === "/r/abcdfeff"){return Response.redirect("https://edge.destruct.dev", 302)}; /* self.destruct.dev */
+
+        /* locked */
         return new Response("error", {status: 404});
-    },
+    }
 });
 
 console.log(`Server running at http://localhost:${server.port}`);

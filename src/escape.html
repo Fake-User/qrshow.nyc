@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="qr show &#x2736;&#xFE0E; 03.16.25 &#x2736;&#xFE0E; nyc">
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>qr show &#x2736;&#xFE0E; 03.16.25 &#x2736;&#xFE0E; nyc</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <style>
+            @font-face{
+                src: url("ogcourier.woff2");
+                font-family: courier;
+            }
+            *::selection{
+                background-color: #fff;
+                color: #000;
+            }
+            html{
+                scrollbar-width: none;
+            }
+            body{
+                justify-content: center;
+                background-color: #000;
+                flex-direction: column;
+                box-sizing: border-box;
+                scrollbar-width: none;
+                font-family: courier;
+                align-items: center;
+                min-height: 100dvh;
+                padding: 20px;
+                display: flex;
+                width: 100vw;
+                color: #fff;
+                margin: 0;
+                gap: 20px;
+            }
+            #basilisk{
+                width: min(38rem, 100vw);
+                aspect-ratio: 1 / 1;
+            }
+            .qr{
+                image-rendering: pixelated;
+                aspect-ratio: 1 / 1;
+                width: 30px;
+                margin: 0;
+            }
+            .info{
+                max-width: 53ch;
+                cursor: text;
+            }
+        </style>
+    </head>
+    <body>
+        <img id="basilisk" src="basilisk.gif" alt="a mischievous basilisk guards six secrets. it will only share them with inquisitive friends.">
+        <div class="info">congratulations, you found your way out! i hope you had some time to browse the sites along the way. if you have a personal site you would like to (temporarily) hide a qr code on, send me an email. i'll give you a code to hide and setup a redirect.</div>
+        <img class="qr" src="email.png" alt="self@destruct.dev">
+        <div class="info">come through qrshow! the qr codes are only gonna get crazier, & we are still accepting submissions. why not scrap somthing together & throw in!</div>
+        <img class="qr" src="favicon.png" alt="https://qrshow.nyc">
+        <div class="info">if you don't know about the recurse center & you managed to get here, you might be a great fit.</div>
+        <img class="qr" src="recurse.png" alt="https://recurse.com/about">
+    </body>
+</html>
