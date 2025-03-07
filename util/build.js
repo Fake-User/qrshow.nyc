@@ -21,7 +21,7 @@ writeFileSync(`${path}/dist/submissions.html`, submissionsContent, {recursive: t
 
 let escapeContent = readFileSync(`${path}/src/escape.html`, "utf-8")
     .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
-    .replace('src="basilisk.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/basilisk.gif`).toString("base64")}"`)
+    .replace('src="computer.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/computer.gif`).toString("base64")}"`)
     .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
     .replace(`src="recurse.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/recurse.png`).toString("base64")}"`)
     .replace(`src="favicon.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
