@@ -58,7 +58,9 @@ setInterval(backup, 1800000); /* 30min */
 const fileSubmissions = Bun.file(`./submissions.html`);
 const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
 const fileSqlite3Wasm = Bun.file(`./sqlite3.wasm`);
+const fileTrifecta = Bun.file(`./trifecta.html`);
 const fileEscape = Bun.file(`./escape.html`);
+const fileFinale = Bun.file(`./finale.html`);
 const fileIndex = Bun.file(`./index.html`);
 
 /* routes */
@@ -87,7 +89,13 @@ const server = Bun.serve({
         if(path === "/r/013373"){return Response.redirect("https://homage.pareinoiddelusion.com/", 302)}; /* peter 0d5012ff */
         if(path === "/r/0d5012ff"){return Response.redirect("http://guywith.dog/", 302)}; /* quy with dog ff0033ff */
         if(path === "/r/ff0033ff"){return Response.redirect("https://sri.xyz/", 302)}; /* sri 242424 */
-        if(path === "/r/242424"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
+        if(path === "/r/242424"){return Response.redirect("https://calvin.sh", 302)}; /* calvin.sh 789def */
+        /* if(path === "/r/789def"){return Response.redirect("https://jarek.lupin.ski/tape-deck", 302)}; */ /* jarek.lupin.ski 456abc */
+        if(path === "/r/789def"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
+
+        /* finale */
+        if(path === "/r/1-555555-2-444444-3-333333"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
+        /* if(path === "/r/prep_the_last_route"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})}; */
 
         /* error */
         return new Response("error", {status: 404});

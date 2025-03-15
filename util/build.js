@@ -28,6 +28,16 @@ let escapeContent = readFileSync(`${path}/src/escape.html`, "utf-8")
     .replace(`src="email.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/email.png`).toString("base64")}"`)
 writeFileSync(`${path}/dist/escape.html`, escapeContent, {recursive: true, force: true});
 
+let trifectaContent = readFileSync(`${path}/src/trifecta.html`, "utf-8")
+    .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
+    .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
+writeFileSync(`${path}/dist/trifecta.html`, trifectaContent, {recursive: true, force: true});
+
+let finaleContent = readFileSync(`${path}/src/finale.html`, "utf-8")
+    .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
+    .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
+writeFileSync(`${path}/dist/finale.html`, finaleContent, {recursive: true, force: true});
+
 cpSync(`${path}/src/basilisk.blend.zip`, `${path}/dist/basilisk.blend.zip`, {recursive: true, force: true});
 cpSync(`${path}/src/sqlite3.wasm`, `${path}/dist/sqlite3.wasm`, {recursive: true, force: true});
 cpSync(`${path}/src/robots.txt`, `${path}/dist/robots.txt`, {recursive: true, force: true});
