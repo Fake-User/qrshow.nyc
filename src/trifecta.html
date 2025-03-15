@@ -33,11 +33,43 @@
                 width: 100vw;
                 color: #fff;
                 margin: 0;
-                gap: 20px;
+            }
+            #transmute{
+                width: min(350px, 70vw);
+                aspect-ratio: 1 / 1;
+                position: relative;
+            }
+            #circle{
+                transform: translate(-50%, -50%);
+                position: absolute;
+                height: 225%;
+                width: 225%;
+            }
+            .spine{
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                position: absolute;
+                height: 75%;
+                width: 75%;
+            }
+            #note{
+                transform: translate(-50%, -50%);
+                background-color: #000;
+                position: absolute;
+                padding: 10px;
+                left: 50%;
+                top: 50%;
             }
         </style>
     </head>
     <body>
-        <p>please&nbsp;return:<br>03.16.25&nbsp;12:00</p>
+        <div id="transmute">
+            <img id="circle" src="circle.gif" style="top: 50%; left: 50%;">
+            <img class="spine" src="spine-3.gif" style="top: 25%; left: 6.5%;" alt="three">
+            <img class="spine" src="spine-4.gif" style="top: 100%; left: 50%;" alt="four">
+            <img class="spine" src="spine-5.gif" style="top: 25%; left: 93.5%;" alt="five">
+            <div id="note">please&nbsp;return:<br>03.16.25&nbsp;12:00</div>
+        </div>
+
     </body>
 </html>

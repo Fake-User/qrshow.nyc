@@ -31,6 +31,10 @@ writeFileSync(`${path}/dist/escape.html`, escapeContent, {recursive: true, force
 let trifectaContent = readFileSync(`${path}/src/trifecta.html`, "utf-8")
     .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
     .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
+    .replace('src="circle.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/circle.gif`).toString("base64")}"`)
+    .replace('src="spine-3.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/spine-3.gif`).toString("base64")}"`)
+    .replace('src="spine-4.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/spine-4.gif`).toString("base64")}"`)
+    .replace('src="spine-5.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/spine-5.gif`).toString("base64")}"`)
 writeFileSync(`${path}/dist/trifecta.html`, trifectaContent, {recursive: true, force: true});
 
 let finaleContent = readFileSync(`${path}/src/finale.html`, "utf-8")
