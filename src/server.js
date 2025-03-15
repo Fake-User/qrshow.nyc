@@ -94,7 +94,7 @@ const server = Bun.serve({
         if(path === "/r/789def"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
 
         /* finale */
-        if(path === "/r/1-555555-2-444444-3-333333"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
+        if(path === "/r/1-00ffff-2-ff00ff-3-ffff00"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
         /* if(path === "/r/prep_the_last_route"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})}; */
 
         /* error */
