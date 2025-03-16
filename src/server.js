@@ -99,7 +99,7 @@ const server = Bun.serve({
         /* finale */
         if(path === "/r/1-00ffff"){return new Response(fileAlone, {headers: {"Content-Type": "text/html"}})};
         if(path === "/r/1-00ffff-2-ff00ff-3-ffff00"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
-        if(path === "/unlock-000000-ff6347ff-777777-591212-666666-DDA0DD-013373-0d5012ff-ff0033ff-242424-789def"){return new Response("/cube-f4dbdc79c695.gif", { status: 200 })};
+        if(path === "/unlock-000000-777777-591212-666666-DDA0DD-013373-0d5012ff-ff0033ff-242424-789def"){return new Response("/cube-f4dbdc79c695.gif", { status: 200 })};
         if(path === "/r/4742-4722-a917-763l"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})};
 
         /* error */
