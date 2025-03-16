@@ -63,6 +63,7 @@ const fileSqlite3Wasm = Bun.file(`./sqlite3.wasm`);
 const fileTrifecta = Bun.file(`./trifecta.html`);
 const fileEscape = Bun.file(`./escape.html`);
 const fileFinale = Bun.file(`./finale.html`);
+const fileAlone = Bun.file(`./alone.html`);
 const fileIndex = Bun.file(`./index.html`);
 
 /* routes */
@@ -96,6 +97,7 @@ const server = Bun.serve({
         if(path === "/r/789def"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
 
         /* finale */
+        if(path === "/r/1-00ffff"){return new Response(fileAlone, {headers: {"Content-Type": "text/html"}})};
         if(path === "/r/1-00ffff-2-ff00ff-3-ffff00"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
         if(path === "/unlock-000000-ff6347ff-777777-591212-666666-DDA0DD-013373-0d5012ff-ff0033ff-242424-789def"){return new Response("/cube-f4dbdc79c695.gif", { status: 200 })};
         if(path === "/r/4742-4722-a917-763l"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})};

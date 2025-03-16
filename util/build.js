@@ -40,7 +40,13 @@ writeFileSync(`${path}/dist/trifecta.html`, trifectaContent, {recursive: true, f
 let finaleContent = readFileSync(`${path}/src/finale.html`, "utf-8")
     .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
     .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
+    .replace('src="basilisk.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/basilisk.gif`).toString("base64")}"`)
 writeFileSync(`${path}/dist/finale.html`, finaleContent, {recursive: true, force: true});
+
+let aloneContent = readFileSync(`${path}/src/alone.html`, "utf-8")
+    .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
+    .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
+writeFileSync(`${path}/dist/alone.html`, aloneContent, {recursive: true, force: true});
 
 cpSync(`${path}/src/cube-f4dbdc79c695.gif`, `${path}/dist/cube-f4dbdc79c695.gif`, {recursive: true, force: true});
 cpSync(`${path}/src/basilisk.blend.zip`, `${path}/dist/basilisk.blend.zip`, {recursive: true, force: true});
