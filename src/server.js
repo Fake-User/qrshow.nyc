@@ -55,8 +55,10 @@ async function backup(){
 setInterval(backup, 1800000); /* 30min */
 
 /* files */
+
 const fileSubmissions = Bun.file(`./submissions.html`);
 const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
+const fileCube = Bun.file(`./cube-f4dbdc79c695.gif`);
 const fileSqlite3Wasm = Bun.file(`./sqlite3.wasm`);
 const fileTrifecta = Bun.file(`./trifecta.html`);
 const fileEscape = Bun.file(`./escape.html`);
@@ -79,6 +81,7 @@ const server = Bun.serve({
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/db.sqlite`){return new Response(Bun.file(dbPath), {headers: {"Content-Type": "application/x-sqlite"}})};
         if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
         if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
+        if(path === "/cube-f4dbdc79c695.gif"){return new Response(fileCube, {headers: {"Content-Type": "image/gif"}})};
 
         /* redirects */
         if(path === "/r/000000" || path === "/r/da70d6ff" || path === "/r/663399ff" || path === "/r/4b0082ff" || path === "/r/ff7f50ff" || path === "/r/ff6347ff"){return Response.redirect("https://self.destruct.dev", 302)}; /* self 777777 */
@@ -90,12 +93,12 @@ const server = Bun.serve({
         if(path === "/r/0d5012ff"){return Response.redirect("http://guywith.dog/", 302)}; /* quy with dog ff0033ff */
         if(path === "/r/ff0033ff"){return Response.redirect("https://sri.xyz/", 302)}; /* sri 242424 */
         if(path === "/r/242424"){return Response.redirect("https://calvin.sh", 302)}; /* calvin.sh 789def */
-        /* if(path === "/r/789def"){return Response.redirect("https://jarek.lupin.ski/tape-deck", 302)}; */ /* jarek.lupin.ski 456abc */
         if(path === "/r/789def"){return new Response(fileEscape, {headers: {"Content-Type": "text/html"}})};
 
         /* finale */
         if(path === "/r/1-00ffff-2-ff00ff-3-ffff00"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
-        /* if(path === "/r/prep_the_last_route"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})}; */
+        if(path === "/unlock-000000-ff6347ff-777777-591212-666666-DDA0DD-013373-0d5012ff-ff0033ff-242424-789def"){return new Response("/cube-f4dbdc79c695.gif", { status: 200 })};
+        if(path === "/r/4742-4722-a917-763l"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})};
 
         /* error */
         return new Response("error", {status: 404});

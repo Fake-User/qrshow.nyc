@@ -28,48 +28,128 @@
                 font-family: courier;
                 align-items: center;
                 min-height: 100dvh;
+                overflow-x: hidden;
                 padding: 20px;
                 display: flex;
                 width: 100vw;
                 color: #fff;
                 margin: 0;
+                gap: 20px
+            }
+            button{
+                transition: background-color 0.5s, color 0.5s;
+                font-family: courier;
+                appearance: none;
+                padding: 0px 4px;
+                background: #000;
+                font-size: 1rem;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                color: #fff;
             }
             #transmute{
-                width: min(350px, 70vw);
+                width: min(700px, 140vw);
                 aspect-ratio: 1 / 1;
                 position: relative;
             }
             #circle{
                 transform: translate(-50%, -50%);
                 position: absolute;
-                height: 225%;
-                width: 225%;
+                height: 100%;
+                width: 100%;
             }
             .spine{
                 transform: translate(-50%, -50%);
                 border-radius: 50%;
                 position: absolute;
-                height: 75%;
-                width: 75%;
+                height: 34%;
+                width: 34%;
             }
-            #note{
+            .cube{
                 transform: translate(-50%, -50%);
-                background-color: #000;
+                border-radius: 50%;
                 position: absolute;
-                padding: 10px;
-                left: 50%;
-                top: 50%;
+                height: 80%;
+                width: 80%;
+            }
+            #form{
+                width: min(500px, 100vw);
+                justify-content: center;
+                box-sizing: border-box;
+                flex-wrap: wrap;
+                display: flex;
+                gap: 10px;
+
+                input{
+                    outline: 1px solid #fff;
+                    box-sizing: border-box;
+                    font-family: courier;
+                    text-align: center;
+                    background: #0000;
+                    font-size: 1rem;
+                    border: none;
+                    color: #fff;
+                }
+            }
+            @media(hover){
+                button:focus-visible, button:hover{
+                    transition: background-color 0s, color 0s;
+                    background-color: #fff;
+                    color: #000;
+                }
             }
         </style>
     </head>
     <body>
         <div id="transmute">
             <img id="circle" src="circle.gif" style="top: 50%; left: 50%;">
-            <img class="spine" src="spine-3.gif" style="top: 25%; left: 6.5%;" alt="three">
-            <img class="spine" src="spine-4.gif" style="top: 100%; left: 50%;" alt="four">
-            <img class="spine" src="spine-5.gif" style="top: 25%; left: 93.5%;" alt="five">
-            <div id="note">please&nbsp;return:<br>03.16.25&nbsp;12:00</div>
+            <img class="spine" src="spine-3.gif" style="top: 40%; left: 32.68%;" alt="three">
+            <img class="spine" src="spine-4.gif" style="top: 70%; left: 50%;" alt="four">
+            <img class="spine" src="spine-5.gif" style="top: 40%; left: 67.32%;" alt="five">
         </div>
+        <form action="/unlock" id="form" method="post" aria-label="submissions form">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-1" aria-label="input 1">
+            <input class="input-text" type="text" maxlength="8" style="width: 9ch;" name="input-2" aria-label="input 2">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-3" aria-label="input 3">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-4" aria-label="input 4">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-5" aria-label="input 5">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-6" aria-label="input 6">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-7" aria-label="input 7">
+            <input class="input-text" type="text" maxlength="8" style="width: 9ch;" name="input-8" aria-label="input 8">
+            <input class="input-text" type="text" maxlength="8" style="width: 9ch;" name="input-9" aria-label="input 9">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-10" aria-label="input 10">
+            <input class="input-text" type="text" maxlength="6" style="width: 7ch;" name="input-11" aria-label="input 11">
+            <div style="width: 100%; display: flex; justify-content: center;">start from the beginning</div>
+            <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;unlock&nbsp;]</button></div>
 
+        </form>
+
+        <script>
+            const elementTransmute = document.getElementById("transmute");
+            const elementSpines = document.querySelectorAll(".spine");
+            const elementForm = document.getElementById("form");
+
+            async function formSubmit(form){
+                const formData = new FormData(form);
+                const formValues = Array.from(formData.values());
+                const key = `/unlock-${formValues.join("-")}`;
+                const submitButton = form.querySelector('button[type="submit"]');
+                try{
+                    const res = await fetch(key);
+                    const path = await res.text();
+                    if(!res.ok){throw new Error("submission failed")};
+                    elementSpines.forEach(spine => {spine.style.display = "none"});
+                    elementForm.style.display = "none";
+                    elementTransmute.insertAdjacentHTML("beforeend", `<img class="cube" src="${path}" style="top: 50%; left: 50%;" alt="cube">`);
+                }
+                catch(error){
+                    submitButton.innerHTML = "[&nbsp;invalid&nbsp;]";
+                    setTimeout(() => {submitButton.innerHTML = "[&nbsp;unlock&nbsp;]"}, 1000);
+                };
+            };
+
+            elementForm.addEventListener("submit", async (e) => {e.preventDefault(); await formSubmit(form)});
+        </script>
     </body>
 </html>

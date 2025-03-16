@@ -42,6 +42,7 @@ let finaleContent = readFileSync(`${path}/src/finale.html`, "utf-8")
     .replace(`href="favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/favicon.png`).toString("base64")}"`)
 writeFileSync(`${path}/dist/finale.html`, finaleContent, {recursive: true, force: true});
 
+cpSync(`${path}/src/cube-f4dbdc79c695.gif`, `${path}/dist/cube-f4dbdc79c695.gif`, {recursive: true, force: true});
 cpSync(`${path}/src/basilisk.blend.zip`, `${path}/dist/basilisk.blend.zip`, {recursive: true, force: true});
 cpSync(`${path}/src/sqlite3.wasm`, `${path}/dist/sqlite3.wasm`, {recursive: true, force: true});
 cpSync(`${path}/src/robots.txt`, `${path}/dist/robots.txt`, {recursive: true, force: true});
