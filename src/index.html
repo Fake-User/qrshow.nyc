@@ -58,81 +58,10 @@
                 border: none;
                 color: #fff;
             }
-            hr{
-                border: none;
-                transform: translateX(-20px);
-                border-top: 1px solid #fff;
-                width: calc(100% + 40px);
-                box-sizing: border-box;
-                margin: 20px 0;
-            }
-            ul{
-                list-style-type: "> ";
-            }
             footer{
                 text-align: center;
                 cursor: text;
             }
-
-            .form-toggle{
-                transition: flex-grow 0.5s ease;
-                will-change: flex-grow;
-
-                &[active="true"]{
-                    transition: background-color 0s, color 0s, flex-grow 0.5s ease;
-                    background-color: #fff;
-                    flex-grow: 1;
-                    color: #000;
-                }
-            }
-            .form{
-                width: min(38rem, 100%);
-                box-sizing: border-box;
-                border: 1px solid #fff;
-                cursor: default;
-                display: none;
-                padding: 20px;
-            }
-            .radio-option{
-                align-items: center;
-                display: flex;
-                gap: 4px;
-            }
-            .input-box{
-                transition: background-color 0.5s ease, border 0.5s ease;
-                background-color: #000;
-                border: 1px solid #fff;
-                appearance: none;
-                border-radius: 0;
-                cursor: pointer;
-                outline: none;
-                padding: 4px;
-                height: 16px;
-                width: 16px;
-
-                &:checked{
-                    transition: background-color 0s;
-                    background-color: #fff;
-                }
-            }
-            .input-text{
-                box-sizing: border-box;
-                font-family: courier;
-                background: #0000;
-                font-size: 1rem;
-                outline: none;
-                border: none;
-                color: #fff;
-                width: 100%;
-
-                &::placeholder{
-                    color: #fff;
-                }
-            }
-            .dashed{
-                border-top: 1px dashed #fff;
-            }
-
             #image-wrapper{
                 width: min(38rem, 100vw);
                 aspect-ratio: 1 / 1;
@@ -162,41 +91,14 @@
                 left: 0;
                 top: 0;
             }
-            #forms{
-                max-width: 100%;
-                width: min(38rem, 100%);
-                height: min-content;
-            }
-            #form-toggles{
-                justify-content: center;
-                overflow: hidden;
+            #retrospective{
                 cursor: pointer;
-                display: flex;
             }
-
             @media(hover){
                 button:focus-visible, button:hover{
                     transition: background-color 0s, color 0s;
                     background-color: #fff;
                     color: #000;
-                }
-                .form-toggle:focus-visible, .form-toggle:hover{
-                    transition: flex-grow 0.5s;
-                    flex-grow: 1;
-                }
-                .input-box:focus-visible, .input-box:hover{
-                    border: 4px solid #fff;
-                    transition: border 0s;
-                }
-            }
-            @media(max-aspect-ratio: 1 / 1){
-                #form-toggles button{
-                    padding: 0px;
-                }
-            }
-            @media(max-width: calc(46ch +  40px)){
-                #form-toggles button span{
-                    display: none;
                 }
             }
         </style>
@@ -207,75 +109,12 @@
             <img id="mask" src="mask.png" alt="a strange glow reveals something familiar, but it is too occluded to see entirely.">
         </div>
 
-        <section id="forms" aria-label="forms">
-            <div id="form-toggles" role="tablist" aria-label="form selection">
-                <button class="form-toggle" form="submissions" active="false" role="tab" aria-controls="submissions"><span aria-hidden="true">[</span>&nbsp;submissions&nbsp;<span aria-hidden="true">]</span></button>
-                <button class="form-toggle" form="volunteer" active="false" role="tab" aria-controls="volunteer"><span aria-hidden="true">[</span>&nbsp;volunteer&nbsp;<span aria-hidden="true">]</span></button>
-                <button class="form-toggle" form="tickets" active="false" role="tab" aria-controls="tickets"><span aria-hidden="true">[</span>&nbsp;tickets&nbsp;<span aria-hidden="true">]</span></button>
-            </div>
-            <div id="submissions" class="form" role="tabpanel" aria-label="submissions">
-                qr show is an exhibition hosted at the recurse center. it features many, any, & all things "qr code" including:
-                <ul aria-label="submission categories">
-                    <li>protocols: technical deep dives & exploits</li>
-                    <li>history: predecessors, competitors, & lore</li>
-                    <li>payloads: data inside qr codes</li>
-                    <li>art: aesthetic indulgence</li>
-                </ul>
-                what kinds of submissions are we accepting? all kinds! (besides inappropriate ones) for example:
-                <ul aria-label="submission examples">
-                    <li>qr codes that cause hiccups & <del>incite&nbsp;violence</del> laughter</li>
-                    <li>collections of qr codes found in the wild</li>
-                    <li>devices that generate / consume qr codes</li>
-                    <li>qr codes made out of ...? moss?</li>
-                </ul>
-                does your submission have to be your own work?<br aria-hidden="true"><br aria-hidden="true">
-                <div style="padding: 0 20px;" role="none">you are allowed to propose other peoples projects. please provide their email so we reach out.</div><br aria-hidden="true">
-                <div style="text-align: center;" role="none">submissions closed 03.15.25<br aria-hidden="true">(unless&nbsp;they&nbsp;are&nbsp;cool)</div><hr aria-hidden="true">
-                <form action="/submit" method="post" aria-label="submissions form">
-                    <input type="hidden" name="role" value="submission">
-                    <div aria-hidden="true">submission category:</div><div aria-label="submission category">
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="other" required><label for="other">transcends categorization</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="protocol" required><label for="protocol">protocol</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="payload" required><label for="payload">payload</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="history" required><label for="history">history</label></div>
-                        <div class="radio-option"><input class="input-box" type="radio" name="category" aria-hidden="true" value="art" required><label for="art">art</label></div>
-                    </div><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="medium" maxlength="64" placeholder="medium (printed, projected, etc):" aria-label="medium (printed, projected, etc)" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="email" name="author" maxlength="254" placeholder="author email (if applicable):" aria-label="author email"><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="title" maxlength="512" placeholder="submission title:" aria-label="submission title" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="url" name="link" maxlength="512" placeholder="submission link:" aria-label="submission link" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" aria-label="email" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" aria-label="name" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="notes" maxlength="512" placeholder="notes (optional):" aria-label="notes"><hr aria-hidden="true">
-                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;submit&nbsp;]</button></div>
-                </form>
-            </div>
-
-            <div id="volunteer" class="form" role="tabpanel" aria-label="volunteer">
-                we should have enough volunteers already, so don't worry about it. please come by though, it will be very cool.<hr aria-hidden="true">
-                <form action="/submit" method="post" aria-label="volunteer form">
-                    <input type="hidden" name="role" value="volunteer">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" aria-label="email" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" aria-label="name" required><hr aria-hidden="true">
-                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;submit&nbsp;]</button></div>
-                </form>
-            </div>
-
-            <div id="tickets" class="form" role="tabpanel" aria-label="tickets">
-                qr show is a public event, just pull up. if you want a fun email, we could send you a fun email.<hr aria-hidden="true">
-                <form action="/submit" method="post" aria-label="tickets form">
-                    <input type="hidden" name="role" value="pullup">
-                    <input class="input-text" type="email" name="email" maxlength="254" placeholder="email:" aria-label="email" required><hr class="dashed" aria-hidden="true">
-                    <input class="input-text" type="text" name="name" maxlength="64" placeholder="name:" aria-label="name" required><hr aria-hidden="true">
-                    <div style="width: 100%; display: flex; justify-content: center;"><button type="submit" aria-label="submit">[&nbsp;submit&nbsp;]</button></div>
-                </form>
-            </div>
-        </section>
+        <button tabindex="0" id="retrospective" aria-label="retrospective">[&nbsp;retrospective&nbsp;coming&nbsp;soon&nbsp;]</button>
 
         <footer aria-label="event details and contact information.">
             qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc<br aria-hidden="true">
-            <button id="address" aria-label="address">397&nbsp;bridge&nbsp;street&nbsp;brooklyn</button><br aria-hidden="true">
-            <button id="email" aria-label="email"><span aria-hidden="true">???&nbsp;</span>hi@greg.technology</button>
+            <button tabindex="0" id="address" aria-label="address">397&nbsp;bridge&nbsp;street&nbsp;brooklyn</button><br aria-hidden="true">
+            <button tabindex="0" id="email" aria-label="email"><span aria-hidden="true">???&nbsp;</span>hi@greg.technology</button>
         </footer >
 
         <script>
@@ -304,50 +143,6 @@
                 setTimeout(() => {email.innerHTML = `<span aria-hidden="true">???&nbsp;</span>hi@greg.technology`}, 500);
             };
 
-            function formClose(){
-                document.querySelector(`[form="${stateForm}"]`).setAttribute("active", "false");
-                document.getElementById(stateForm).style.display = "none";
-                stateForm = "closed";
-            };
-
-            function formToggle(e){
-                const toggle = e.target.getAttribute("form");
-                if(!toggle){return}
-                switch(true){
-                    case(stateForm === "closed"):
-                        stateForm = toggle;
-                        e.target.setAttribute("active", "true");
-                        document.getElementById(stateForm).style.display = "block";
-                        break;
-                    case(stateForm !== toggle):
-                        document.querySelector(`[form="${stateForm}"]`).setAttribute("active", "false");
-                        document.getElementById(stateForm).style.display = "none";
-                        stateForm = toggle;
-                        e.target.setAttribute("active", "true");
-                        document.getElementById(stateForm).style.display = "block";
-                        break;
-                    case(stateForm === toggle):
-                        formClose();
-                        break;
-                };
-            };
-
-            async function formSubmit(form){
-                const formData = new FormData(form);
-                const submitButton = form.querySelector('button[type="submit"]');
-                try{
-                    const response = await fetch(form.action, {method: "POST", body: formData});
-                    if(!response.ok){throw new Error("submission failed")};
-                    submitButton.innerHTML = "[&nbsp;submitted&nbsp;&#9745;&nbsp;]";
-                    setTimeout(() => {submitButton.innerHTML = "[&nbsp;submit&nbsp;]"; form.reset(); formClose()}, 1000);
-                }
-                catch(error){
-                    console.error("Error:", error);
-                    submitButton.innerHTML = "[&nbsp;error&nbsp;&#9746;&nbsp;]";
-                    setTimeout(() => {submitButton.innerHTML = "[&nbsp;submit&nbsp;]"}, 1000);
-                };
-            };
-
             function keyDown(e){
                 switch(true){
                     case(e.key === "Escape"):
@@ -366,7 +161,6 @@
             };
 
             document.querySelectorAll("form").forEach(form => {form.addEventListener("submit", async (e) => {e.preventDefault(); await formSubmit(form)})});
-            document.getElementById("form-toggles").addEventListener("pointerdown", e => {formToggle(e)}, {passive: true});
             elementMask.addEventListener("touchstart", e => {e.preventDefault(); moveCursor(e)});
             elementAddress.addEventListener("pointerdown", openMaps, {passive: true});
             elementEmail.addEventListener("pointerdown", copyEmail, {passive: true});
