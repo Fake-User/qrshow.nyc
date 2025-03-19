@@ -1,16 +1,16 @@
-/* globals */
-const dbPath = `${process.env.STORE}/db.sqlite`;
+
 
 /* files */
 const fileSubmissions = Bun.file(`./submissions.html`);
 const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
 const fileCube = Bun.file(`./cube-f4dbdc79c695.gif`);
-const fileSqlite3Wasm = Bun.file(`./sqlite3.wasm`);
 const fileTrifecta = Bun.file(`./trifecta.html`);
+const fileSqlite3 = Bun.file(`./sqlite3.wasm`);
 const fileEscape = Bun.file(`./escape.html`);
 const fileFinale = Bun.file(`./finale.html`);
 const fileAlone = Bun.file(`./alone.html`);
 const fileIndex = Bun.file(`./index.html`);
+const fileDb = Bun.file(`./db.sqlite`);
 
 /* routes */
 const server = Bun.serve({
@@ -24,9 +24,9 @@ const server = Bun.serve({
         if(path === "/" || path === "/index.html"){return new Response(fileIndex, {headers: {"Content-Type": "text/html"}})};
 
         /* files */
-        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/store/db.sqlite`){return new Response(Bun.file(dbPath), {headers: {"Content-Type": "application/x-sqlite"}})};
+        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/db.sqlite`){return new Response(fileDb, {headers: {"Content-Type": "application/x-sqlite"}})};
         if(path === "/basilisk.blend.zip"){return new Response(fileBasilisk, {headers: {"Content-Type": "application/zip"}})};
-        if(path === "/sqlite3.wasm"){return new Response(fileSqlite3Wasm, {headers: {"Content-Type": "application/wasm"}})};
+        if(path === "/sqlite3.wasm"){return new Response(fileSqlite3, {headers: {"Content-Type": "application/wasm"}})};
         if(path === "/cube-f4dbdc79c695.gif"){return new Response(fileCube, {headers: {"Content-Type": "image/gif"}})};
 
         /* redirects */

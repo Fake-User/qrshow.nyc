@@ -52,6 +52,7 @@ cpSync(`${path}/src/cube-f4dbdc79c695.gif`, `${path}/dist/cube-f4dbdc79c695.gif`
 cpSync(`${path}/src/basilisk.blend.zip`, `${path}/dist/basilisk.blend.zip`, {recursive: true, force: true});
 cpSync(`${path}/src/sqlite3.wasm`, `${path}/dist/sqlite3.wasm`, {recursive: true, force: true});
 cpSync(`${path}/src/robots.txt`, `${path}/dist/robots.txt`, {recursive: true, force: true});
+cpSync(`${path}/src/db.sqlite`, `${path}/dist/db.sqlite`, {recursive: true, force: true});
 cpSync(`${path}/src/server.js`, `${path}/dist/server.js`, {recursive: true, force: true});
 
 console.log("build completed");
