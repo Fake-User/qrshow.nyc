@@ -6,6 +6,7 @@ const path = dirname(dirname(fileURLToPath(import.meta.url)));
 mkdirSync(`${path}/dist`, {recursive: true, force: true});
 
 let indexContent = readFileSync(`${path}/src/index.html`, "utf-8")
+    .replace('src="retrospective.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/retrospective.gif`).toString("base64")}"`)
     .replace(`url("ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/ogcourier.woff2`).toString("base64")}")`)
     .replace('src="basilisk.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/basilisk.gif`).toString("base64")}"`)
     .replace(`url("cursor.webp")`, `url("data:image/gif;base64,${readFileSync(`${path}/src/cursor.webp`).toString("base64")}")`)

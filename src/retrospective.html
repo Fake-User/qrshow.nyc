@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="qr show &#x2736;&#xFE0E; 03.16.25 &#x2736;&#xFE0E; nyc">
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>qr show &#x2736;&#xFE0E; retrospective</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <style>
+            @font-face{
+                src: url("ogcourier.woff2");
+                font-family: courier;
+            }
+            *::selection{
+                background-color: #fff;
+                color: #000;
+            }
+            html{
+                scrollbar-width: none;
+            }
+            body{
+                justify-content: center;
+                background-color: #000;
+                flex-direction: column;
+                box-sizing: border-box;
+                scrollbar-width: none;
+                font-family: courier;
+                align-items: center;
+                min-height: 100dvh;
+                cursor: zoom-in;
+                padding: 20px;
+                display: flex;
+                width: 100vw;
+                color: #fff;
+                margin: 0;
+                gap: 20px;
+            }
+            button{
+                transition: background-color 0.5s, color 0.5s;
+                font-family: courier;
+                width: min-content;
+                appearance: none;
+                padding: 0px 4px;
+                background: #000;
+                font-size: 1rem;
+                cursor: pointer;
+                display: block;
+                outline: none;
+                border: none;
+                color: #fff;
+            }
+            footer{
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+            #image-wrapper{
+                width: min(38rem, 100vw);
+                aspect-ratio: 1 / 1;
+                position: relative;
+            }
+            #basilisk{
+                position: absolute;
+                user-select: none;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+            #mask{
+                mask-position: -9999px -9999px;
+                mask-image: url("cursor.webp");
+                -webkit-touch-callout: none;
+                image-rendering: pixelated;
+                mix-blend-mode: difference;
+                -webkit-user-select: none;
+                mask-repeat: no-repeat;
+                position: absolute;
+                user-select: none;
+                mask-size: cover;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+            #retrospective{
+                transition: filter ease 0.5s;
+                width: min(420px, 100vw);
+                filter: invert(0%);
+                cursor: pointer;
+                display: block;
+                outline: none;
+            }
+            @media(hover){
+                button:focus-visible, button:hover{
+                    transition: background-color 0s, color 0s;
+                    background-color: #fff;
+                    color: #000;
+                }
+                #retrospective:focus-visible, #retrospective:hover{
+                    transition: filter 0s;
+                    filter: invert(100%);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        retrospective
+    </body>
+</html>

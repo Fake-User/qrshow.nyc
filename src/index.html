@@ -49,18 +49,21 @@
             button{
                 transition: background-color 0.5s, color 0.5s;
                 font-family: courier;
+                width: min-content;
                 appearance: none;
                 padding: 0px 4px;
                 background: #000;
                 font-size: 1rem;
                 cursor: pointer;
+                display: block;
                 outline: none;
                 border: none;
                 color: #fff;
             }
             footer{
-                text-align: center;
-                cursor: text;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
             }
             #image-wrapper{
                 width: min(38rem, 100vw);
@@ -92,13 +95,22 @@
                 top: 0;
             }
             #retrospective{
+                transition: filter ease 0.5s;
+                width: min(420px, 100vw);
+                filter: invert(0%);
                 cursor: pointer;
+                display: block;
+                outline: none;
             }
             @media(hover){
                 button:focus-visible, button:hover{
                     transition: background-color 0s, color 0s;
                     background-color: #fff;
                     color: #000;
+                }
+                #retrospective:focus-visible, #retrospective:hover{
+                    transition: filter 0s;
+                    filter: invert(100%);
                 }
             }
         </style>
@@ -109,11 +121,11 @@
             <img id="mask" src="mask.png" alt="a strange glow reveals something familiar, but it is too occluded to see entirely.">
         </div>
 
-        <button tabindex="0" id="retrospective" aria-label="retrospective">[&nbsp;retrospective&nbsp;coming&nbsp;soon&nbsp;]</button>
+        <img tabindex="0" id="retrospective" role="button" src="retrospective.gif" alt="retrospective">
 
         <footer aria-label="event details and contact information.">
-            qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc<br aria-hidden="true">
-            <button tabindex="0" id="address" aria-label="address">397&nbsp;bridge&nbsp;street&nbsp;brooklyn</button><br aria-hidden="true">
+            <button tabindex="0" id="info" aria-label="info">qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc</button>
+            <button tabindex="0" id="address" aria-label="address">397&nbsp;bridge&nbsp;street&nbsp;brooklyn</button>
             <button tabindex="0" id="email" aria-label="email"><span aria-hidden="true">???&nbsp;</span>hi@greg.technology</button>
         </footer >
 
@@ -121,6 +133,7 @@
             const eventPointerDown = new CustomEvent("pointerdown", {bubbles: true, cancelable: true});
             const elementAddress = document.getElementById("address");
             const elementEmail = document.getElementById("email");
+            const elementInfo = document.getElementById("info");
             const elementMask = document.getElementById("mask");
             let stateForm = "closed";
 
@@ -135,6 +148,12 @@
 
             function openMaps(){
                 window.location.href="maps:q=397+Bridge+Street+Brooklyn+New+York";
+            };
+
+            function copyInfo(){
+                elementInfo.innerHTML = "··························copied!";
+                navigator.clipboard.writeText("qr show * 03.16.25 / 12-8pm * nyc");
+                setTimeout(() => {info.innerHTML = `qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc`}, 500);
             };
 
             function copyEmail(){
@@ -164,6 +183,7 @@
             elementMask.addEventListener("touchstart", e => {e.preventDefault(); moveCursor(e)});
             elementAddress.addEventListener("pointerdown", openMaps, {passive: true});
             elementEmail.addEventListener("pointerdown", copyEmail, {passive: true});
+            elementInfo.addEventListener("pointerdown", copyInfo, {passive: true});
             window.addEventListener("pointermove", moveCursor, {passive: true});
             window.addEventListener("touchend", resetCursor, {passive: true});
             window.addEventListener("keydown", e => {keyDown(e)});
