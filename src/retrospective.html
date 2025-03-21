@@ -24,11 +24,10 @@
                 background-color: #000;
                 flex-direction: column;
                 box-sizing: border-box;
-                scrollbar-width: none;
+
                 font-family: courier;
                 align-items: center;
-                min-height: 100dvh;
-                cursor: zoom-in;
+                height: 100dvh;
                 padding: 20px;
                 display: flex;
                 width: 100vw;
@@ -36,10 +35,17 @@
                 margin: 0;
                 gap: 20px;
             }
+            hr{
+                border: none;
+                border-top: 1px dashed #fff;
+                display: block;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
             button{
                 transition: background-color 0.5s, color 0.5s;
                 font-family: courier;
-                width: min-content;
                 appearance: none;
                 padding: 0px 4px;
                 background: #000;
@@ -50,47 +56,53 @@
                 border: none;
                 color: #fff;
             }
-            footer{
-                align-items: center;
-                display: flex;
-                flex-direction: column;
-            }
-            #image-wrapper{
-                width: min(38rem, 100vw);
-                aspect-ratio: 1 / 1;
-                position: relative;
-            }
-            #basilisk{
-                position: absolute;
-                user-select: none;
+            #main{
+                grid-template-areas: "list info";
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+                border: 1px solid #fff;
+                display: grid;
                 height: 100%;
                 width: 100%;
-                left: 0;
-                top: 0;
             }
-            #mask{
-                mask-position: -9999px -9999px;
-                mask-image: url("cursor.webp");
-                -webkit-touch-callout: none;
-                image-rendering: pixelated;
-                mix-blend-mode: difference;
-                -webkit-user-select: none;
-                mask-repeat: no-repeat;
-                position: absolute;
-                user-select: none;
-                mask-size: cover;
-                height: 100%;
+            #list{
+                border-right: 1px solid #fff;
+                overscroll-behavior: none;
+                scrollbar-width: none;
+                overflow-y: scroll;
+                grid-area: list;
+            }
+            .row{
+                grid-template-columns: 1fr 1fr;
+                width: calc(100% - 40px);
+                box-sizing: border-box;
+                text-align: left;
+                display: grid;
+                margin: 20px;
+            }
+            #row-key{
+                box-sizing: border-box;
+                background-color: #fff;
+                padding: 4px 24px;
+                position: sticky;
+                color: #000;
                 width: 100%;
-                left: 0;
+                margin: 0;
                 top: 0;
             }
-            #retrospective{
-                transition: filter ease 0.5s;
-                width: min(420px, 100vw);
-                filter: invert(0%);
-                cursor: pointer;
-                display: block;
-                outline: none;
+            #info{
+                overflow-y: scroll;
+                grid-area: info;
+            }
+            @media(max-width: 1000px){
+                #main{
+                    grid-template-areas: "info" "list";
+                    grid-template-rows: 600px 1fr;
+                    grid-template-columns: 1fr;
+                }
+                #list{
+                    border: none;
+                }
             }
             @media(hover){
                 button:focus-visible, button:hover{
@@ -98,14 +110,35 @@
                     background-color: #fff;
                     color: #000;
                 }
-                #retrospective:focus-visible, #retrospective:hover{
-                    transition: filter 0s;
-                    filter: invert(100%);
-                }
             }
         </style>
     </head>
     <body>
-        retrospective
+        <div id="main">
+            <div id="list" tabindex="-1">
+                <div class="row" id="row-key"><div>artist</div><div>title</div></div>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+                <button tabindex="0" class="row"><div>artist</div><div>title</div></button><hr>
+            </div>
+            <div id="info" tabindex="-1"></div>
+        </div>
     </body>
 </html>
