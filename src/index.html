@@ -29,6 +29,19 @@
             html{
                 scrollbar-width: none;
             }
+            a{
+                unset: all;
+                outline: none;
+
+                #retrospective{
+                    transition: filter ease 0.5s;
+                    width: min(420px, 100vw);
+                    filter: invert(0%);
+                    cursor: pointer;
+                    display: block;
+                    outline: none;
+                }
+            }
             body{
                 justify-content: center;
                 background-color: #000;
@@ -94,21 +107,13 @@
                 left: 0;
                 top: 0;
             }
-            #retrospective{
-                transition: filter ease 0.5s;
-                width: min(420px, 100vw);
-                filter: invert(0%);
-                cursor: pointer;
-                display: block;
-                outline: none;
-            }
             @media(hover){
                 button:focus-visible, button:hover{
                     transition: background-color 0s, color 0s;
                     background-color: #fff;
                     color: #000;
                 }
-                #retrospective:focus-visible, #retrospective:hover{
+                a:focus-visible #retrospective, a:hover #retrospective{
                     transition: filter 0s;
                     filter: invert(100%);
                 }
@@ -121,7 +126,7 @@
             <img id="mask" src="mask.png" alt="a strange glow reveals something familiar, but it is too occluded to see entirely.">
         </div>
 
-        <a href="./retrospective.html"><img tabindex="0" id="retrospective" src="retrospective.gif" alt="retrospective"></a>
+        <a href="./retrospective.html" tabindex="0"><img id="retrospective" src="retrospective.gif" alt="retrospective"></a>
 
         <footer aria-label="event details and contact information.">
             <button tabindex="0" id="info" aria-label="info">qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc</button>
@@ -166,11 +171,7 @@
                 switch(true){
                     case(e.key === "Escape"):
                         e.preventDefault();
-                        if(document.activeElement !== document.body){
-                            if(document.activeElement.getAttribute("form") === stateForm){formClose()};
-                            document.activeElement.blur();
-                        }
-                        else if(stateForm !== "closed"){formClose()};
+                        if(document.activeElement !== document.body){document.activeElement.blur()};
                         break;
                     case(e.key === "Enter"):
                         e.preventDefault();

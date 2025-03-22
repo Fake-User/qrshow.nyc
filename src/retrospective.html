@@ -162,126 +162,126 @@
                 },
                 god_encoder: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/god_encoder.png",
                     title: "writing of the god encoder",
                     author: "claire froelich",
                     text: "info text"
                 },
                 human_qr: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/human_qr.png",
                     title: "human qr",
                     author: "daniel legut",
                     text: "info text"
                 },
                 anaqronism: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/anaqronism.png",
                     title: "apple //e anaqronism",
                     author: "garrett bodley",
                     text: "info text"
                 },
                 andre: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/andre.png",
                     title: "andré",
                     author: "greg technology",
                     text: "info text"
                 },
                 between_us: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/between_us.png",
                     title: "keep this between us",
                     author: "guy dupont",
                     text: "info text"
                 },
                 qrspectives: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/qrspectives.png",
                     title: "qrspectives",
                     author: "guy dupont",
                     text: "info text"
                 },
                 qr_trivia: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/qr_trivia.png",
                     title: "qr trivia",
                     author: "henry zhu",
                     text: "info text"
                 },
                 quasi_recursion: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/quasi_recursion.png",
                     title: "quasi recursion",
                     author: "jasper davidoff",
                     text: "info text"
                 },
                 receipt_loom: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/receipt_loom.png",
                     title: "receipt loom",
                     author: "josh pazmino & shanni sun",
                     text: "info text"
                 },
                 qr_life: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/qr_life.png",
                     title: "qr is life",
                     author: "lucas bang",
                     text: "info text"
                 },
                 sol_lewitt: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/sol_lewitt.png",
                     title: "sol lewitt qr code generator",
                     author: "morry kolman",
                     text: "info text"
                 },
                 balanced_breakfast: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/balanced_breakfast.png",
                     title: "part of a balanced breakfast",
                     author: "nate woods",
                     text: "info text"
                 },
                 autonomous_response: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/autonomous_response.png",
                     title: "autonomous response",
                     author: "owen trueblood",
                     text: "info text"
                 },
                 valid_qr: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/valid_qr.png",
                     title: "this is a valid qr code",
                     author: "richard whaling",
                     text: "info text"
                 },
                 qrkey: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/qrkey.png",
                     title: "qrkey",
                     author: "calvin lang",
                     text: "info text"
                 },
                 guestbook: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/guestbook.png",
                     title: "qr show guestbook",
                     author: "sriganesh sureshkumar",
                     text: "info text"
                 },
                 tortillas: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/tortillas.png",
                     title: "qr tortillas",
                     author: "stephen downward",
                     text: "info text"
                 },
                 letters: {
                     link: "https://calvin.sh/projects/unscannable-qr-code/",
-                    image: "./projects/unscanable.png",
+                    image: "./projects/letters.png",
                     title: "why are qr codes with capital letters smaller than qr codes with lower-case letters?",
                     author: "terence eden",
                     text: "info text"
@@ -321,6 +321,7 @@
         </div>
     </body>
     <script>
+        const eventPointerDown = new CustomEvent("pointerdown", {bubbles: true, cancelable: true});
         const elementAuthor = document.getElementById("author");
         const elementImage = document.getElementById("image");
         const elementTitle = document.getElementById("title");
@@ -328,19 +329,24 @@
         const elementText = document.getElementById("text");
         stateInfo = "";
 
-        function switchInfo(){
-
-        };
-
-        elementList.addEventListener("pointerdown", e => {
+        function switchInfo(e){
             const button = e.target.closest("button");
             if(button){
-                elementImage.src = (projects[button.id].image);
                 elementAuthor.innerHTML = (projects[button.id].author);
-                elementText.innerHTML = (projects[button.id].text);
                 elementTitle.innerHTML = (projects[button.id].title);
-                //stateInfo = button.id;
-            }
-        });
+                elementText.innerHTML = (projects[button.id].text);
+                elementImage.src = (projects[button.id].image);
+            };
+        };
+
+        function keyDown(e){
+            if(e.key === "Enter"){
+                e.preventDefault();
+                document.activeElement?.dispatchEvent(eventPointerDown);
+            };
+        };
+
+        elementList.addEventListener("pointerdown", e => switchInfo(e));
+        window.addEventListener("keydown", e => {keyDown(e)});
     </script>
 </html>
