@@ -3,6 +3,10 @@ class CompInfo extends HTMLElement{
         const sr = this.attachShadow({mode: "closed"});
         sr.innerHTML = `
             <style>
+                a{
+                    transition: background-color 0.5s, color 0.5s;
+                    color: #fff;
+                }
                 #main{
                     overscroll-behavior: none;
                     scrollbar-color: #0000;
@@ -21,19 +25,27 @@ class CompInfo extends HTMLElement{
                 img{
                     aspect-ratio: 1 / 1;
                     justify-self: center;
-                    width: 400px;
+                    width: 360px;
+                    padding: 20px;
                 }
                 #info{
                     box-sizing: border-box;
                     padding: 20px;
                     width: 100%;
                 }
+                @media(hover){
+                    a:hover{
+                        transition-duration: 0s;
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
             </style>
 
             <div id="main">
                 <img src="cube.gif">
-                <div id="title">artist - title</div>
-                <div id="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                <div id="title">qr show - retrospective</div>
+                <div id="info"> qr show was an exhibition organized <a href="https://greg.technology" target="_blank">greg&nbsp;sadetsky</a> & <a href="https://linenisgreat.com" target="_blank">sasha&nbsp;friedenberg</a> featuring many, any, & all things "qr&nbsp;code". it was hosted by the <a href="https://www.recurse.com/about" target="_blank">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors and an archive of the exibits.<br><br>this archive is not comprehensive. if you presented something that hasn't been listed (or attended the event and captured some great photos) & would like to share, please email self@destruct.dev<br><br>to everyone who attended - thank you for. to all the volunteers -  thank you for all your help and being excellent</div>
             <div>
         `;
     };

@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>qr show &#x2736;&#xFE0E; retrospective</title>
         <link rel="icon" type="image/png" href="favicon.png">
-        <script src="comp-info.js"></script>
         <style>
             @font-face{
                 src: url("ogcourier.woff2");
@@ -35,6 +34,10 @@
                 margin: 0;
                 gap: 20px;
             }
+            a{
+                transition: background-color 0.5s, color 0.5s;
+                color: #fff;
+            }
             hr{
                 border: none;
                 border-top: 1px dashed #fff;
@@ -57,8 +60,8 @@
                 color: #fff;
             }
             #main{
-                grid-template-areas: "list info";
                 grid-template-columns: 1fr 600px;
+                grid-template-areas: "list info";
                 grid-template-rows: 1fr;
                 border: 1px solid #fff;
                 display: grid;
@@ -87,10 +90,10 @@
                     overflow-y: hidden;
                 }
             }
-            #row-key{
+            .row-key{
                 grid-template-columns: 1fr 1fr;
-                box-sizing: border-box;
                 background-color: #fff;
+                box-sizing: border-box;
                 padding: 4px 24px;
                 position: sticky;
                 display: grid;
@@ -99,11 +102,30 @@
                 width: 100%;
                 margin: 0;
                 top: 0;
+
+                div{
+                    mask-image: linear-gradient(to right, #000 80%, transparent);
+                    scrollbar-width: none;
+                    white-space: nowrap;
+                    overflow-y: hidden;
+                }
             }
             #info{
+                overscroll-behavior: none;
+                scrollbar-color: #0000;
+                flex-direction: column;
                 overflow-y: scroll;
-                grid-area: info;
-                height: 100%;
+                display: flex;
+            }
+            #image{
+                align-self: center;
+                aspect-ratio: 1 / 1;
+                padding: 20px;
+                width: 360px;
+            }
+            #text{
+                box-sizing: border-box;
+                padding: 20px;
                 width: 100%;
             }
             @media(max-width: 1000px){
@@ -122,36 +144,203 @@
                     background-color: #fff;
                     color: #000;
                 }
+                a:hover{
+                    transition-duration: 0s;
+                    background-color: #fff;
+                    color: #000;
+                }
             }
         </style>
+        <script>
+            projects = {
+                unscannable: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "unscannable",
+                    author: "calvin lang",
+                    text: "info text"
+                },
+                god_encoder: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "writing of the god encoder",
+                    author: "claire froelich",
+                    text: "info text"
+                },
+                human_qr: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "human qr",
+                    author: "daniel legut",
+                    text: "info text"
+                },
+                anaqronism: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "apple //e anaqronism",
+                    author: "garrett bodley",
+                    text: "info text"
+                },
+                andre: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "andré",
+                    author: "greg technology",
+                    text: "info text"
+                },
+                between_us: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "keep this between us",
+                    author: "guy dupont",
+                    text: "info text"
+                },
+                qrspectives: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "qrspectives",
+                    author: "guy dupont",
+                    text: "info text"
+                },
+                qr_trivia: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "qr trivia",
+                    author: "henry zhu",
+                    text: "info text"
+                },
+                quasi_recursion: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "quasi recursion",
+                    author: "jasper davidoff",
+                    text: "info text"
+                },
+                receipt_loom: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "receipt loom",
+                    author: "josh pazmino & shanni sun",
+                    text: "info text"
+                },
+                qr_life: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "qr is life",
+                    author: "lucas bang",
+                    text: "info text"
+                },
+                sol_lewitt: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "sol lewitt qr code generator",
+                    author: "morry kolman",
+                    text: "info text"
+                },
+                balanced_breakfast: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "part of a balanced breakfast",
+                    author: "nate woods",
+                    text: "info text"
+                },
+                autonomous_response: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "autonomous response",
+                    author: "owen trueblood",
+                    text: "info text"
+                },
+                valid_qr: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "this is a valid qr code",
+                    author: "richard whaling",
+                    text: "info text"
+                },
+                qrkey: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "qrkey",
+                    author: "calvin lang",
+                    text: "info text"
+                },
+                guestbook: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "qr show guestbook",
+                    author: "sriganesh sureshkumar",
+                    text: "info text"
+                },
+                tortillas: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "qr tortillas",
+                    author: "stephen downward",
+                    text: "info text"
+                },
+                letters: {
+                    link: "https://calvin.sh/projects/unscannable-qr-code/",
+                    image: "./projects/unscanable.png",
+                    title: "why are qr codes with capital letters smaller than qr codes with lower-case letters?",
+                    author: "terence eden",
+                    text: "info text"
+                }
+            };
+        </script>
     </head>
     <body>
         <div id="main">
             <div id="list" tabindex="-1">
-                <div id="row-key"><div>artist</div><div>title</div></div>
-                <button tabindex="0" class="row"><div>calvin liang</div><div>unscannable</div></button><hr>
-                <button tabindex="0" class="row"><div>claire froelich</div><div>writing of the god encoder</div></button><hr>
-                <button tabindex="0" class="row"><div>daniel legut</div><div>human qr</div></button><hr>
-                <button tabindex="0" class="row"><div>garrett bodley</div><div>apple //e anaqronism</div></button><hr>
-                <button tabindex="0" class="row"><div>greg technology</div><div>andré</div></button><hr>
-                <button tabindex="0" class="row"><div>guy dupont</div><div>keep this between us</div></button><hr>
-                <button tabindex="0" class="row"><div>guy dupont</div><div>qrspectives</div></button><hr>
-                <button tabindex="0" class="row"><div>henry zhu</div><div>qr trivia</div></button><hr>
-                <button tabindex="0" class="row"><div>jasper davidoff</div><div>quasi recursion</div></button><hr>
-                <button tabindex="0" class="row"><div>josh pazmino & shanni sun</div><div>receipt loom</div></button><hr>
-                <button tabindex="0" class="row"><div>lucas bang</div><div>qr is life</div></button><hr>
-                <button tabindex="0" class="row"><div>morry kolman</div><div>sol lewitt qr code generator</div></button><hr>
-                <button tabindex="0" class="row"><div>nate woods</div><div>part of a balanced breakfast</div></button><hr>
-                <button tabindex="0" class="row"><div>owen trueblood</div><div>autonomous response</div></button><hr>
-                <button tabindex="0" class="row"><div>richard whaling</div><div>this is a valid qr code</div></button><hr>
-                <button tabindex="0" class="row"><div>spencer kee & stephen downward</div><div>qrkey</div></button><hr>
-                <button tabindex="0" class="row"><div>sriganesh sureshkumar</div><div>qr show guestbook</div></button><hr>
-                <button tabindex="0" class="row"><div>stephen downward</div><div>qr tortillas</div></button><hr>
-                <button tabindex="0" class="row"><div>terence eden</div><div>why are qr codes with capital letters smaller than qr codes with lowercase letters?</div></button><hr>
+                <div class="row-key"><div>author</div><div>title</div></div>
+                <button tabindex="0" class="row" id="unscannable"><div>calvin liang</div><div>unscannable</div></button><hr>
+                <button tabindex="0" class="row" id="god_encoder"><div>claire froelich</div><div>writing of the god encoder</div></button><hr>
+                <button tabindex="0" class="row" id="human_qr"><div>daniel legut</div><div>human qr</div></button><hr>
+                <button tabindex="0" class="row" id="anaqronism"><div>garrett bodley</div><div>apple //e anaqronism</div></button><hr>
+                <button tabindex="0" class="row" id="andre"><div>greg technology</div><div>andré</div></button><hr>
+                <button tabindex="0" class="row" id="between_us"><div>guy dupont</div><div>keep this between us</div></button><hr>
+                <button tabindex="0" class="row" id="qrspectives"><div>guy dupont</div><div>qrspectives</div></button><hr>
+                <button tabindex="0" class="row" id="qr_trivia"><div>henry zhu</div><div>qr trivia</div></button><hr>
+                <button tabindex="0" class="row" id="quasi_recursion"><div>jasper davidoff</div><div>quasi recursion</div></button><hr>
+                <button tabindex="0" class="row" id="receipt_loom"><div>josh pazmino & shanni sun</div><div>receipt loom</div></button><hr>
+                <button tabindex="0" class="row" id="qr_life"><div>lucas bang</div><div>qr is life</div></button><hr>
+                <button tabindex="0" class="row" id="sol_lewitt"><div>morry kolman</div><div>sol lewitt qr code generator</div></button><hr>
+                <button tabindex="0" class="row" id="balanced_breakfast"><div>nate woods</div><div>part of a balanced breakfast</div></button><hr>
+                <button tabindex="0" class="row" id="autonomous_response"><div>owen trueblood</div><div>autonomous response</div></button><hr>
+                <button tabindex="0" class="row" id="valid_qr"><div>richard whaling</div><div>this is a valid qr code</div></button><hr>
+                <button tabindex="0" class="row" id="guestbook"><div>sriganesh sureshkumar</div><div>qr show guestbook</div></button><hr>
+                <button tabindex="0" class="row" id="tortillas"><div>stephen downward</div><div>qr tortillas</div></button><hr>
+                <button tabindex="0" class="row" id="letters"><div>terence eden</div><div>why are qr codes with capital letters smaller than qr codes with lowercase letters?</div></button><hr>
+                <button tabindex="0" class="row" id="???"><div>???</div><div>???????????</div></button><hr>
             </div>
             <div id="info" tabindex="-1">
-                <comp-info></comp-info>
+                <img id="image" src="cube.gif">
+                <div class="row row-key"><div id="author">qrshow</div><div id="title">retrospective</div></div>
+                <div id="text"> qr show was an exhibition organized <a href="https://greg.technology" target="_blank">greg&nbsp;sadetsky</a> & <a href="https://linenisgreat.com" target="_blank">sasha&nbsp;friedenberg</a> featuring many, any, & all things "qr&nbsp;code". it was hosted by the <a href="https://www.recurse.com/about" target="_blank">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors and an archive of the exibits.<br><br>this archive is not comprehensive. if you presented something that hasn't been listed (or attended the event and captured some great photos) & would like to share, please email self@destruct.dev<br><br>to everyone who attended - thank you for. to all the volunteers - thank you for all your help and being excellent</div>
             </div>
         </div>
     </body>
+    <script>
+        const elementAuthor = document.getElementById("author");
+        const elementImage = document.getElementById("image");
+        const elementTitle = document.getElementById("title");
+        const elementList = document.getElementById("list");
+        const elementText = document.getElementById("text");
+        stateInfo = "";
+
+        function switchInfo(){
+
+        };
+
+        elementList.addEventListener("pointerdown", e => {
+            const button = e.target.closest("button");
+            if(button){
+                elementImage.src = (projects[button.id].image);
+                elementAuthor.innerHTML = (projects[button.id].author);
+                elementText.innerHTML = (projects[button.id].text);
+                elementTitle.innerHTML = (projects[button.id].title);
+                //stateInfo = button.id;
+            }
+        });
+    </script>
 </html>
