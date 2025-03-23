@@ -169,7 +169,7 @@
                 <button tabindex="0" class="row" active="false" id="between_us"><div>guy dupont</div><div>keep this between us</div></button><hr>
                 <button tabindex="0" class="row" active="false" id="qrspectives"><div>guy dupont</div><div>qrspectives</div></button><hr>
                 <button tabindex="0" class="row" active="false" id="qr_trivia"><div>henry zhu</div><div>qr trivia</div></button><hr>
-                <button tabindex="0" class="row" active="false" id="quasi_recursion"><div>jasper davidoff & rowan macy</div><div>quasi recursion</div></button><hr>
+                <button tabindex="0" class="row" active="false" id="quasi_recursion"><div>jasper davidoff</div><div>quasi recursion</div></button><hr>
                 <button tabindex="0" class="row" active="false" id="receipt_loom"><div>josh pazmino & shanni sun</div><div>receipt loom</div></button><hr>
                 <button tabindex="0" class="row" active="false" id="qr_life"><div>lucas bang</div><div>qr is life</div></button><hr>
                 <button tabindex="0" class="row" active="false" id="sol_lewitt"><div>morry kolman</div><div>sol lewitt qr code generator</div></button><hr>
@@ -189,123 +189,109 @@
     <script>
         const projects = {
             default: {
-                link: "",
                 image: "cube.gif",
                 title: "retrospective",
                 author: "qr show",
-                text: "qr show was an exhibition organized <a href=\"https://greg.technology\" target=\"_blank\">greg&nbsp;sadetsky</a> & <a href=\"https://linenisgreat.com\" target=\"_blank\">sasha&nbsp;friedenberg</a> featuring many, any, & all things \"qr&nbsp;code\". it was hosted by the <a href=\"https://www.recurse.com/about\" target=\"_blank\">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors & an archive of their exibits.<br><br>this archive is not comprehensive. if you presented something that hasn't been listed & would like to share it, please email self@destruct.dev<br><br>to everyone who attended - thank you for. to all the volunteers - thank you for all your help & being excellent"
+                text: `qr show was an exhibition organized <a href="https://greg.technology" target="_blank">greg&nbsp;sadetsky</a> & <a href="https://linenisgreat.com" target="_blank">sasha&nbsp;friedenberg</a> featuring many, any, & all things "qr&nbsp;code". it was hosted by the <a href="https://www.recurse.com/about" target="_blank">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors & an archive of their exibits.<br><br>this archive is not comprehensive. if you presented something that hasn't been listed & would like to share it, please email self@destruct.dev<br><br>to everyone who attended - thank you for. to all the volunteers - thank you for all your help & being excellent`
             },
             unscannable: {
-                link: "https://calvin.sh/projects/unscannable-qr-code/",
                 image: "./projects/unscanable.png",
                 title: "unscannable",
                 author: "calvin lang",
-                text: "a 3d printed qr code that cannot be scanned (this render can, but the physical version can't). its raised black modules disrupt machine vision, obscuring just enough of the background to prevent a phone from parsing it."
+                text: `a 3d printed qr code that cannot be scanned (this render can, but the physical version can't). its raised black modules disrupt machine vision, obscuring just enough of the background to prevent a phone from parsing it.<br><br><a href="https://calvin.sh/" target="_blank">calvin lang</a><br><a href="https://calvin.sh/projects/unscannable-qr-code/" target="_blank">project link</a>`
             },
             god_encoder: {
-                link: "https://clairefro.github.io/writing-of-the-god-playground/",
                 image: "./projects/god_encoder.png",
                 title: "writing of the god encoder",
                 author: "claire froelich",
-                text: "while not a qr code per se, this tool encodes & decodes information into & out of organic shapes. you can encode up to 200 characters into cowspot or woodgrain textures. it was inspired by borge's story \"writing of the god\", the idea being to combine deterministic pattern generation with natural themes."
+                text: `while not a qr code per se, this tool encodes & decodes information into & out of organic shapes. you can encode up to 200 characters into cowspot or woodgrain textures. it was inspired by borge's story "writing of the god", the idea being to combine deterministic pattern generation with natural themes.<br><br><a href="https://clairefro.dev/" target="_blank">claire froelich</a><br><a href="https://clairefro.github.io/writing-of-the-god-playground/" target="_blank">project link</a>`
             },
             human_qr: {
-                link: "https://humanqr.com/",
                 image: "./projects/human_qr.png",
                 title: "human qr",
                 author: "daniel legut",
-                text: "artwork of qr codes occluded by a face.<br>\"making qr codes something pleasing to look at.\""
+                text: `artwork of qr codes occluded by a face.<br>"making qr codes something pleasing to look at."<br><br><a href="https://www.devmandan.com/" target="_blank">daniel legut</a><br><a href="https://humanqr.com/" target="_blank">project link</a>`
             },
             anaqronism: {
-                link: "https://docs.google.com/document/d/1JQAYR9VvXFtbnKInH5WC9LtEMYX1_fp77ch-RQ8h2mk/edit?tab=t.0#heading=h.399m27v7ais3",
                 image: "./projects/anaqronism.png",
                 title: "apple //e anaqronism",
                 author: "garrett bodley",
-                text: "info text"
+                text: `<br><br><a href="https://github.com/Garrett-Bodley" target="_blank">garrett bodley</a><br><a href="https://github.com/Garrett-Bodley/Apple-e-QR" target="_blank">project link</a>`
             },
             between_us: {
-                link: "https://github.com/dupontgu/qr-file-share",
                 image: "./projects/between_us.png",
                 title: "keep this between us",
                 author: "guy dupont",
-                text: "imagine you want to share a file. you don't want to send it over the internet, you just want to share it directly. this system lets you encode a file into a qr code that provides a download when scanned. if you're feeling brave, try scanning the qr code above. it will dowload a file that isn't hosted on any server; the file is entirely encoded in the qr code."
+                text: `imagine you want to share a file. you don't want to send it over the internet, you just want to share it directly. this system lets you encode a file into a qr code that provides a download when scanned. if you're feeling brave, try scanning the qr code above. it will dowload a file that isn't hosted on any server; the file is entirely encoded in the qr code.<br><br><a href="https://github.com/dupontgu" target="_blank">guy dupont</a><br><a href="https://github.com/dupontgu/qr-file-share" target="_blank">project link</a>`
             },
             qrspectives: {
                 link: "",
                 image: "./projects/qrspectives.png",
                 title: "qrspectives",
                 author: "guy dupont",
-                text: "info text"
+                text: `<br><br><a href="https://github.com/dupontgu" target="_blank">guy dupont</a><br><a href="https://www.instagram.com/p/DFORZIjS5Sg/" target="_blank">project link</a>`
             },
             qr_trivia: {
-                link: "https://x.com/left_pad/status/1898525818034237935",
                 image: "./projects/qr_trivia.png",
                 title: "qr trivia",
                 author: "henry zhu",
-                text: "info text"
+                text: `<br><br><a href="https://henryzoo.com" target="_blank">henry zhu</a><br><a href="https://x.com/left_pad/status/1898525818034237935" target="_blank">project link</a>`
             },
             quasi_recursion: {
-                link: "https://www.pocket-squares.org/2024/01/qrcossword.html",
                 image: "./projects/quasi_recursion.png",
                 title: "quasi recursion",
-                author: "jasper davidoff & rowan macy",
-                text: "a recursive crossword puzzle crammed into a qr code. the layout is recursive, the clues are recursive. if you don't understand this, try reading it again."
+                author: "jasper davidoff",
+                text: `a recursive crossword puzzle crammed into a qr code. the layout is recursive, the clues are recursive. if you don't understand this, try reading it again.<br><br><a href="https://www.jasperdavidoff.com/" target="_blank">jasper davidoff</a><br><a href="https://www.pocket-squares.org/2024/01/qrcossword.html" target="_blank">project link</a>`
             },
             receipt_loom: {
-                link: "https://receipt.blue/weave",
                 image: "./projects/receipt_loom.png",
                 title: "receipt loom",
                 author: "josh pazmino & shanni sun",
-                text: "info text"
+                text: `<br><br><a href="https://github.com/jmpaz" target="_blank">josh pazmino</a><br><a href="https://shannisun.net/" target="_blank">shanni sun</a><br><a href="https://receipt.blue/weave" target="_blank">project link</a>`
             },
             qr_life: {
-                link: "https://www.cs.hmc.edu/~bang/qrlife.gif",
                 image: "./projects/qr_life.png",
                 title: "qr is life",
                 author: "lucas bang",
-                text: "this qr code links to an animation of conway's game of life where the initial state is the qr code itself."
+                text: `this qr code links to an animation of conway's game of life where the initial state is the qr code itself.<br><br><a href="https://www.cs.hmc.edu/~bang/" target="_blank">lucas bang</a><br><a href="https://www.cs.hmc.edu/~bang/qrlife.gif" target="_blank">project link</a>`
             },
             sol_lewitt: {
-                link: "https://wttdotm.com/solLewittQRCodes/",
                 image: "./projects/sol_lewitt.png",
                 title: "sol lewitt qr code generator",
                 author: "morry kolman",
-                text: "info text"
+                text: `<br><br><a href="https://wttdotm.com/" target="_blank">morry kolman</a><br><a href="https://wttdotm.com/solLewittQRCodes/" target="_blank">project link</a>`
             },
             balanced_breakfast: {
-                link: "https://calvin.sh/projects/unscannable-qr-code/",
                 image: "./projects/balanced_breakfast.png",
                 title: "part of a balanced breakfast",
                 author: "nate woods",
-                text: "qr codes fashioned from coffee beans, cereal, burned into toast, & transfered onto donuts. no longer can you only see qr codes. now you can taste qr codes. they also link to gloomy wikipedia pages, just in case your day has been a bit too fun."
+                text: `qr codes fashioned from coffee beans, cereal, burned into toast, & transfered onto donuts. no longer can you only see qr codes. now you can taste qr codes. they also link to gloomy wikipedia pages, just in case your day has been a bit too fun.<br><br><a href="https://github.com/nwoods" target="_blank">nate woods</a>`
             },
             autonomous_response: {
-                link: "https://calvin.sh/projects/unscannable-qr-code/",
                 image: "./projects/autonomous_response.png",
                 title: "autonomous response",
                 author: "owen trueblood",
-                text: "a program that draws qr codes that encode instructions to reproduce the same qr code in a random direction at a fixed distance. if two codes intersect then become invalid, resulting in competition & emergent pattern formation.<br><br>close inspection will reveal that the qr codes have some wavy edges. this is because they were \"plotted\" line by line. the program was written to be compatible with pen plotters, with the intention that it could run physically. In practice this is too slow, so for now it remains on a digital canvas."
+                text: `a program that draws qr codes that encode instructions to reproduce the same qr code in a random direction at a fixed distance. if two codes intersect they become invalid, resulting in competition & emergent pattern formation.<br><br>close inspection will reveal that the qr codes have some wavy edges. this is because they were "plotted" line by line. the program was written to be compatible with pen plotters, with the intention that it could run physically. In practice this is too slow, so for now it remains on a digital canvas.<br><br><a href="https://owentrueblood.com/" target="_blank">owen trueblood</a><br><a href="https://www.are.na/block/27915105" target="_blank">project link</a>`
             },
             guestbook: {
                 link: "https://calvin.sh/projects/unscannable-qr-code/",
                 image: "./projects/guestbook.png",
                 title: "qr show guestbook",
                 author: "sriganesh sureshkumar",
-                text: "info text"
+                text: `<br><br><a href="https://sri.xyz/" target="_blank">sriganesh sureshkumar</a><br><a href="https://qrshownyc.com/" target="_blank">project link</a>`
             },
             letters: {
-                link: "https://calvin.sh/projects/unscannable-qr-code/",
                 image: "./projects/letters.png",
                 title: "why are qr codes with capital letters smaller than qr codes with lower-case letters?",
                 author: "terence eden",
-                text: "info text"
+                text: `<br><br><a href="https://shkspr.mobi/blog/" target="_blank">terence eden</a><br><a href="https://shkspr.mobi/blog/2025/02/why-are-qr-codes-with-capital-letters-smaller-than-qr-codes-with-lower-case-letters/" target="_blank">project link</a>`
             },
             easter_egg: {
                 link: "https://qrshow.nyc",
                 image: "ogbasilisk.gif",
                 title: "???????????",
                 author: "???",
-                text: "info text"
+                text: `???`
             }
         };
         const eventPointerDown = new CustomEvent("pointerdown", {bubbles: true, cancelable: true});
@@ -322,7 +308,6 @@
                 let project = button.id
                 console.log(`button.id: ${button.id} | stateProject: ${stateProject}`);
                 if(button.id === stateProject){
-                    console.log("smae bro");
                     button.setAttribute("active", "false");
                     project = "default";
                 }
