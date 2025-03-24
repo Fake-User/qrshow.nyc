@@ -1,6 +1,5 @@
-
-
 /* files */
+const fileRetrospective = Bun.file(`./retrospective.html`);
 const fileSubmissions = Bun.file(`./submissions.html`);
 const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
 const fileCube = Bun.file(`./cube-f4dbdc79c695.gif`);
@@ -20,8 +19,8 @@ const server = Bun.serve({
         const path = url.pathname;
 
         /* main */
-        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
         if(path === "/" || path === "/index.html"){return new Response(fileIndex, {headers: {"Content-Type": "text/html"}})};
+        if(path === "/retrospective" || path === "/retrospective.html"){return new Response(fileRetrospective, {headers: {"Content-Type": "text/html"}})};
 
         /* files */
         if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}/db.sqlite`){return new Response(fileDb, {headers: {"Content-Type": "application/x-sqlite"}})};
@@ -46,6 +45,9 @@ const server = Bun.serve({
         if(path === "/r/1-00ffff-2-ff00ff-3-ffff00"){return new Response(fileTrifecta, {headers: {"Content-Type": "text/html"}})};
         if(path === "/unlock-000000-777777-591212-666666-DDA0DD-013373-0d5012ff-ff0033ff-242424-789def"){return new Response("/cube-f4dbdc79c695.gif", { status: 200 })};
         if(path === "/r/4742-4722-a917-763l"){return new Response(fileFinale, {headers: {"Content-Type": "text/html"}})};
+
+        /* admin */
+        if(path === `/${process.env.SECURITY_MORE_LIKE_OBSCURITY}`){return new Response(fileSubmissions, {headers: {"Content-Type": "text/html"}})};
 
         /* error */
         return new Response("error", {status: 404});

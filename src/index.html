@@ -16,10 +16,10 @@
         <meta property="twitter:domain" content="qrshow.nyc">
         <meta name="twitter:card" content="summary_large_image">
         <title>qr show &#x2736;&#xFE0E; 03.16.25 &#x2736;&#xFE0E; nyc</title>
-        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="icon" type="image/png" href="/assets/favicon.png">
         <style>
             @font-face{
-                src: url("ogcourier.woff2");
+                src: url("/assets/ogcourier.woff2");
                 font-family: courier;
             }
             *::selection{
@@ -92,8 +92,8 @@
                 top: 0;
             }
             #mask{
+                mask-image: url("/assets/cursor.webp");
                 mask-position: -9999px -9999px;
-                mask-image: url("cursor.webp");
                 -webkit-touch-callout: none;
                 image-rendering: pixelated;
                 mix-blend-mode: difference;
@@ -122,11 +122,11 @@
     </head>
     <body>
         <div id="image-wrapper" role="none">
-            <img id="basilisk" src="basilisk.gif" alt="a mischievous basilisk guards many secrets. it will only share them with inquisitive friends.">
-            <img id="mask" src="mask.png" alt="a strange glow reveals something familiar, but it is too occluded to see entirely.">
+            <img id="basilisk" src="/assets/basilisk.gif" alt="a mischievous basilisk guards many secrets. it will only share them with inquisitive friends.">
+            <img id="mask" src="/assets/mask.png" alt="a strange glow reveals something familiar, but it is too occluded to see entirely.">
         </div>
 
-        <a href="./retrospective.html" tabindex="0"><img id="retrospective" src="retrospective.gif" alt="retrospective"></a>
+        <a href="./retrospective.html" tabindex="0"><img id="retrospective" src="/assets/retrospective.gif" alt="retrospective"></a>
 
         <footer aria-label="event details and contact information.">
             <button tabindex="0" id="info" aria-label="info">qr&nbsp;show&nbsp;&#x2736;&#xFE0E;&nbsp;03.16.25&nbsp;/&nbsp;12-8pm&nbsp;&#x2736;&#xFE0E;&nbsp;nyc</button>
