@@ -70,6 +70,7 @@
                 grid-template-columns: 1fr 600px;
                 grid-template-areas: "list info";
                 grid-template-rows: 1fr;
+                box-sizing: border-box;
                 border: 1px solid #fff;
                 display: grid;
                 height: 100%;
@@ -136,6 +137,9 @@
                 width: 100%;
             }
             @media(max-width: 1000px){
+                body{
+                    padding: 0px;
+                }
                 #main{
                     grid-template-areas: "info" "list";
                     grid-template-rows: 600px 1fr;
