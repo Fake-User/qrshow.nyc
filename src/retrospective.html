@@ -300,6 +300,7 @@
         const elementAuthor = document.getElementById("author");
         const elementImage = document.getElementById("image");
         const elementTitle = document.getElementById("title");
+        const elementInfo = document.getElementById("info");
         const elementList = document.getElementById("list");
         const elementText = document.getElementById("text");
         let stateProject = "default";
@@ -321,6 +322,7 @@
                 elementTitle.innerHTML = (projects[project].title);
                 elementText.innerHTML = (projects[project].text);
                 elementImage.src = (projects[project].image);
+                elementInfo.scrollTop = 0;
                 stateProject = project;
             };
         };
