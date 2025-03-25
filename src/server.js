@@ -2,6 +2,7 @@
 const fileRetrospective = Bun.file(`./retrospective.html`);
 const fileSubmissions = Bun.file(`./submissions.html`);
 const fileBasilisk = Bun.file(`./basilisk.blend.zip`);
+const fileRabbithole = Bun.file(`./rabbithole.html`);
 const fileCube = Bun.file(`./cube-f4dbdc79c695.gif`);
 const fileTrifecta = Bun.file(`./trifecta.html`);
 const fileSqlite3 = Bun.file(`./sqlite3.wasm`);
@@ -29,7 +30,7 @@ const server = Bun.serve({
         if(path === "/cube-f4dbdc79c695.gif"){return new Response(fileCube, {headers: {"Content-Type": "image/gif"}})};
 
         /* redirects */
-        if(path === "/r/000000" || path === "/r/da70d6ff" || path === "/r/663399ff" || path === "/r/4b0082ff" || path === "/r/ff7f50ff" || path === "/r/ff6347ff"){return Response.redirect("https://self.destruct.dev", 302)}; /* self 777777 */
+        if(path === "/r/000000" || path === "/r/da70d6ff" || path === "/r/663399ff" || path === "/r/4b0082ff" || path === "/r/ff7f50ff" || path === "/r/ff6347ff"){return new Response(fileRabbithole, {headers: {"Content-Type": "text/html"}})}; /* self 777777 */
         if(path === "/r/777777"){return Response.redirect("http://ahg.lol/", 302)}; /* gelmbo 591212 */
         if(path === "/r/591212"){return Response.redirect("https://edge.destruct.dev", 302)}; /* destruct 666666 */
         if(path === "/r/666666"){return Response.redirect("https://fridgepoem.com/#x=314159&y=271828", 302)}; /* sam DDA0DD */

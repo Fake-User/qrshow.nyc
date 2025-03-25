@@ -36,6 +36,14 @@ let retrospectiveContent = readFileSync(`${path}/src/retrospective.html`, "utf-8
     .replaceAll('/assets/cube.gif', `data:image/gif;base64,${readFileSync(`${path}/src/assets/cube.gif`).toString("base64")}`)
 writeFileSync(`${path}/dist/retrospective.html`, retrospectiveContent, {recursive: true, force: true});
 
+let rabbitholeContent = readFileSync(`${path}/src/rabbithole.html`, "utf-8")
+    .replace(`url("/assets/cursor-small.webp")`, `url("data:image/gif;base64,${readFileSync(`${path}/src/assets/cursor-small.webp`).toString("base64")}")`)
+    .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
+    .replace(`href="/assets/favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/assets/favicon.png`).toString("base64")}"`)
+    .replace('src="/assets/hellcat.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/hellcat.gif`).toString("base64")}"`)
+    .replace(`src="/assets/next.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/next.png`).toString("base64")}"`)
+writeFileSync(`${path}/dist/rabbithole.html`, rabbitholeContent, {recursive: true, force: true});
+
 let submissionsContent = readFileSync(`${path}/src/submissions.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
     .replace(`href="/assets/favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/assets/favicon.png`).toString("base64")}"`)
