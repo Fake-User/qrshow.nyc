@@ -306,6 +306,8 @@
         const elementText = document.getElementById("text");
         let stateProject = "default";
 
+        elementImage.onload = () => {elementInfo.scrollTo({top: 0, behavior: 'smooth'})};
+
         function switchInfo(e){
             const button = e.target.closest("button");
             if(button){
@@ -323,7 +325,6 @@
                 elementTitle.innerHTML = (projects[project].title);
                 elementText.innerHTML = (projects[project].text);
                 elementImage.src = (projects[project].image);
-                elementInfo.scrollTop = 0;
                 stateProject = project;
             };
         };
