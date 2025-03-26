@@ -33,6 +33,7 @@ let retrospectiveContent = readFileSync(`${path}/src/retrospective.html`, "utf-8
     .replace(`/assets/human-qr.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/human-qr.png`).toString("base64")}`)
     .replace(`/assets/letters.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/letters.png`).toString("base64")}`)
     .replace(`/assets/folk-qr.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/folk-qr.png`).toString("base64")}`)
+    .replace(`/assets/knit-qr.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/knit-qr.png`).toString("base64")}`)
     .replace(`/assets/qr-life.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/qr-life.png`).toString("base64")}`)
     .replaceAll('/assets/cube.gif', `data:image/gif;base64,${readFileSync(`${path}/src/assets/cube.gif`).toString("base64")}`)
 writeFileSync(`${path}/dist/retrospective.html`, retrospectiveContent, {recursive: true, force: true});
