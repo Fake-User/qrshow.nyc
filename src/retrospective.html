@@ -136,6 +136,7 @@
                 box-sizing: border-box;
                 padding: 20px;
                 width: 100%;
+                margin: 0;
             }
             @media(max-aspect-ratio: 1 / 1){
                 body{
@@ -166,7 +167,7 @@
     </head>
     <body>
         <div id="main" role="none">
-            <div id="list" tabindex="-1" aria-label="project list" role="grid">
+            <div id="list" tabindex="-1" aria-label="project list" role="table">
                 <div class="row-key" role="row">
                     <div role="columnheader">author</div>
                     <div role="columnheader">title</div>
@@ -281,14 +282,14 @@
                     <div id="author" aria-label="author">qrshow</div>
                     <div id="title" aria-label="project">retrospective</div>
                 </div>
-                <div id="text">qr show was an exhibition organized by <a href="https://greg.technology" target="_blank">greg&nbsp;sadetsky</a> & <a href="https://linenisgreat.com" target="_blank">sasha&nbsp;friedenberg</a> featuring many, any, & all things "qr&nbsp;code". it was hosted by the <a href="https://www.recurse.com/about" target="_blank">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors & an archive of their exhibits.<br aria-hidden="true"><br aria-hidden="true">this archive is still in development & not comprehensive. if you presented something that hasnt been listed & would like to share it, please email self@destruct.dev<br aria-hidden="true"><br aria-hidden="true">to everyone who attended - thank you for coming. it was wonderful to have you all.<br aria-hidden="true"><br aria-hidden="true">to the volunteers - thank you for all your help setting up, cleaning up, & being very cool.<br aria-hidden="true"><br aria-hidden="true">to the authors - thank you for your sharing your spectaculare creations with all of us.<br aria-hidden="true"><br aria-hidden="true">to the recurse center - thank you for being the most generous hosts. you are incredible people!</div>
+                <p id="text">qr show was an exhibition organized by <a href="https://greg.technology" target="_blank">greg&nbsp;sadetsky</a> & <a href="https://linenisgreat.com" target="_blank">sasha&nbsp;friedenberg</a> featuring many, any, & all things "qr&nbsp;code". it was hosted by the <a href="https://www.recurse.com/about" target="_blank">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors & an archive of their exhibits.<br aria-hidden="true"><br aria-hidden="true">this archive is still in development & not comprehensive. if you presented something that hasnt been listed & would like to share it, please email self@destruct.dev<br aria-hidden="true"><br aria-hidden="true">to everyone who attended - thank you for coming. it was wonderful to have you all.<br aria-hidden="true"><br aria-hidden="true">to the volunteers - thank you for all your help setting up, cleaning up, & being very cool.<br aria-hidden="true"><br aria-hidden="true">to the authors - thank you for your sharing your spectaculare creations with all of us.<br aria-hidden="true"><br aria-hidden="true">to the recurse center - thank you for being the most generous hosts. you are incredible people!</p>
             </div>
         </div>
     </body>
     <script>
         const projects = {
-            default: {
-                image: "/assets/cube.gif",
+            cube: {
+                image: "",
                 title: "retrospective",
                 author: "qr show",
                 text: `qr show was an exhibition organized by <a href="https://greg.technology" target="_blank">greg&nbsp;sadetsky</a> & <a href="https://linenisgreat.com" target="_blank">sasha&nbsp;friedenberg</a> featuring many, any, & all things "qr&nbsp;code". it was hosted by the <a href="https://www.recurse.com/about" target="_blank">recurse&nbsp;center</a> on sunday march 16th 2025 in brooklyn nyc. this is a directory of the authors & an archive of their exhibits.<br aria-hidden="true"><br aria-hidden="true">this archive is still in development & not comprehensive. if you presented something that hasnt been listed & would like to share it, please email self@destruct.dev<br aria-hidden="true"><br aria-hidden="true">to everyone who attended - thank you for coming, it was wonderful to share what we have been working on.<br aria-hidden="true"><br aria-hidden="true">to the volunteers - thank you for all your help setting up, cleaning up, & being very cool.<br aria-hidden="true"><br aria-hidden="true">to the authors - thank you for your sharing your spectaculare creations with all of us.<br aria-hidden="true"><br aria-hidden="true">to the recurse center - thank you for being the most generous hosts. you are incredible people!`
@@ -411,7 +412,7 @@
                 image: "/assets/letters.png",
                 title: "case sensitive size?",
                 author: "terence eden",
-                text: `why are qr codes with capital letters smaller than qr codes with lower-case letters? qr codes containing only: (A-Z space $ % * + - . / :) can use alphanumeric mode, taking 11 bits per 2 characters. lower case letters require using byte mode, taking 8 bits per character. for case-insensitive data, using capital letters can create smaller qr codes or enable more error correction.<br aria-hidden="true"><br aria-hidden="true"><a href="https://shkspr.mobi/blog/" target="_blank">terence eden</a><br aria-hidden="true"><a href="https://shkspr.mobi/blog/2025/02/why-are-qr-codes-with-capital-letters-smaller-than-qr-codes-with-lower-case-letters/" target="_blank">project link</a>`
+                text: `why are qr codes with upper case letters smaller than qr codes with lower-case letters? qr codes containing only: (A-Z space $ % * + - . / :) can use alphanumeric mode, taking 11 bits per 2 characters. lower case letters require using byte mode, taking 8 bits per character. for case-insensitive data, using upper case letters can create smaller qr codes or enable more error correction.<br aria-hidden="true"><br aria-hidden="true"><a href="https://shkspr.mobi/blog/" target="_blank">terence eden</a><br aria-hidden="true"><a href="https://shkspr.mobi/blog/2025/02/why-are-qr-codes-with-capital-letters-smaller-than-qr-codes-with-lower-case-letters/" target="_blank">project link</a>`
             },
             easter_egg: {
                 image: "/assets/ogbasilisk.gif",
@@ -427,7 +428,9 @@
         const elementInfo = document.getElementById("info");
         const elementList = document.getElementById("list");
         const elementText = document.getElementById("text");
-        let stateProject = "default";
+        let stateProject = "cube";
+
+        projects.cube.image = elementImage.getAttribute("src");
 
         function switchInfo(e){
             const button = e.target.closest("button");
@@ -435,10 +438,10 @@
                 let project = button.id;
                 if(button.id === stateProject){
                     button.setAttribute("active", "false");
-                    project = "default";
+                    project = "cube";
                 }
                 else{
-                    if(stateProject !== "default"){
+                    if(stateProject !== "cube"){
                         document.getElementById(stateProject).setAttribute("active", "false");
                     }
                     button.setAttribute("active", "true");
@@ -457,7 +460,7 @@
                 e.preventDefault();
                 document.activeElement?.dispatchEvent(eventPointerDown);
             }
-            else if(e.key === "Escape" && stateProject !== "default"){
+            else if(e.key === "Escape" && stateProject !== "cube"){
                 e.preventDefault();
                 document.getElementById(stateProject).dispatchEvent(eventPointerDown);
             };
