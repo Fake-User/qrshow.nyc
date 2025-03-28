@@ -332,7 +332,7 @@
                 text: `???`
             }
         };
-        const eventPointerDown = new CustomEvent("pointerdown", {bubbles: true, cancelable: true});
+        const eventPointerDown = new CustomEvent("pointerdown", {bubbles: true});
         const elementAuthor = document.getElementById("author");
         const elementImage = document.getElementById("image");
         const elementTitle = document.getElementById("title");
@@ -344,16 +344,17 @@
         function switchInfo(e){
             const button = e.target.closest("button");
             if(button){
-                let project = button.id
-                console.log(`button.id: ${button.id} | stateProject: ${stateProject}`);
+                let project = button.id;
                 if(button.id === stateProject){
                     button.setAttribute("active", "false");
                     project = "default";
                 }
                 else{
+                    if(stateProject !== "default"){
+                        document.getElementById(stateProject).setAttribute("active", "false");
+                    }
                     button.setAttribute("active", "true");
                 };
-                if(stateProject !== "default"){document.getElementById(stateProject).setAttribute("active", "false")};
                 elementAuthor.innerHTML = (projects[project].author);
                 elementTitle.innerHTML = (projects[project].title);
                 elementText.innerHTML = (projects[project].text);
@@ -370,8 +371,7 @@
             }
             else if(e.key === "Escape" && stateProject !== "default"){
                 e.preventDefault();
-                const activeButton = document.getElementById(stateProject);
-                activeButton.dispatchEvent(eventPointerDown);
+                document.getElementById(stateProject).dispatchEvent(eventPointerDown);
             };
         };
 
