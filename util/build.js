@@ -21,6 +21,7 @@ let retrospectiveContent = readFileSync(`${path}/src/retrospective.html`, "utf-8
     .replace(`/assets/quasi-recursion.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/quasi-recursion.png`).toString("base64")}`)
     .replace(`href="/assets/favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/assets/favicon.png`).toString("base64")}"`)
     .replace(`/assets/receipt-loom.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/receipt-loom.png`).toString("base64")}`)
+    .replace(`/assets/qr-tortilla.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/qr-tortilla.png`).toString("base64")}`)
     .replace(`/assets/god-encoder.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/god-encoder.png`).toString("base64")}`)
     .replace(`/assets/qrspectives.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/qrspectives.png`).toString("base64")}`)
     .replace(`/assets/anaqronism.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/anaqronism.png`).toString("base64")}`)
