@@ -57,8 +57,8 @@ writeFileSync(`${path}/dist/submissions.html`, submissionsContent, {recursive: t
 
 let escapeContent = readFileSync(`${path}/src/escape.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
-    .replace('src="/assets/computer.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/computer.gif`).toString("base64")}"`)
     .replace(`href="/assets/favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/assets/favicon.png`).toString("base64")}"`)
+    .replace('src="/assets/computer.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/computer.gif`).toString("base64")}"`)
     .replace(`src="/assets/recurse.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/recurse.png`).toString("base64")}"`)
     .replace(`src="/assets/favicon.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/favicon.png`).toString("base64")}"`)
     .replace(`src="/assets/email.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/email.png`).toString("base64")}"`)
@@ -67,10 +67,10 @@ writeFileSync(`${path}/dist/escape.html`, escapeContent, {recursive: true, force
 let trifectaContent = readFileSync(`${path}/src/trifecta.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
     .replace(`href="/assets/favicon.png"`, `href="data:image/png;base64,${readFileSync(`${path}/src/assets/favicon.png`).toString("base64")}"`)
-    .replace('src="/assets/circle.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/circle.gif`).toString("base64")}"`)
     .replace('src="/assets/spine-3.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/spine-3.gif`).toString("base64")}"`)
     .replace('src="/assets/spine-4.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/spine-4.gif`).toString("base64")}"`)
     .replace('src="/assets/spine-5.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/spine-5.gif`).toString("base64")}"`)
+    .replace('src="/assets/circle.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/circle.gif`).toString("base64")}"`)
 writeFileSync(`${path}/dist/trifecta.html`, trifectaContent, {recursive: true, force: true});
 
 let finaleContent = readFileSync(`${path}/src/finale.html`, "utf-8")
