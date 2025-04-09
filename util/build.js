@@ -18,6 +18,7 @@ let retrospectiveContent = readFileSync(`${path}/src/retrospective.html`, "utf-8
     .replace(`/assets/autonomous-response.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/autonomous-response.png`).toString("base64")}`)
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
     .replace(`/assets/balanced-breakfast.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/balanced-breakfast.png`).toString("base64")}`)
+    .replace(`/assets/serpent-qrossing.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/serpent-qrossing.png`).toString("base64")}`)
     .replace(`/assets/quasi-recursion.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/quasi-recursion.png`).toString("base64")}`)
     .replace(`href="/assets/favicon.gif"`, `href="data:image/gif;base64,${readFileSync(`${path}/src/assets/favicon.gif`).toString("base64")}"`)
     .replace(`/assets/receipt-loom.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/receipt-loom.png`).toString("base64")}`)
