@@ -93,6 +93,7 @@
                     box-sizing: border-box;
                     font-family: courier;
                     text-align: center;
+                    caret-color: #fff;
                     background: #0000;
                     border-radius: 0;
                     font-size: 1rem;
@@ -102,6 +103,11 @@
 
                     &::placeholder{
                         color: #fff;
+                    }
+
+                    &::selection{
+                        background-color: #ffff;/* safari selection wash breaks opacity | https://github.com/w3c/csswg-drafts/issues/6853 */
+                        color: #000;
                     }
                 }
             }
