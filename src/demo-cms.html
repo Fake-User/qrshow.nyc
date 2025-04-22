@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>qr show &#x2736;&#xFE0E; submissions</title>
+        <title>qr show &#x2736;&#xFE0E; demo cms</title>
         <link rel="icon" type="image/gif" href="/assets/favicon.gif">
         <style>
             @font-face{
@@ -14,9 +14,6 @@
             *::selection{
                 background-color: #fff;
                 color: #000;
-            }
-            a, a:visited{
-                color: #fff;
             }
             body{
                 overscroll-behavior: none;
@@ -33,6 +30,9 @@
                 color: #fff;
                 margin: 0;
                 gap: 20px;
+            }
+            a, a:visited{
+                color: #fff;
             }
             #main{
                 grid-template-rows: 60px auto 1fr;
@@ -58,14 +58,15 @@
             }
             #row{
                 border-bottom: 1px solid #fff;
-                height: calc(41px + 10lh);
-                padding: 20px;
                 overflow-y: scroll;
+                padding: 20px;
+                height: 11lh;
             }
             #key, #res{
                 grid-template-columns: min-content repeat(10, 1fr);
                 grid-template-rows: 30px;
                 background-color: #fff;
+                scrollbar-width: none;
                 white-space: nowrap;
                 line-height: 30px;
                 display: grid;
@@ -132,7 +133,7 @@
                     );
                     dbExec();
                 };
-                fetch(`${window.location.pathname}/db.sqlite`)
+                fetch(`${window.location.pathname}/demo.sqlite`)
                 .then(res => res.arrayBuffer())
                 .then(buffer => {initdb(buffer)})
             };

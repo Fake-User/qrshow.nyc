@@ -9,10 +9,19 @@ let indexContent = readFileSync(`${path}/src/index.html`, "utf-8")
     .replace('src="/assets/retrospective.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/retrospective.gif`).toString("base64")}"`)
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
     .replace('src="/assets/basilisk.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/basilisk.gif`).toString("base64")}"`)
-    .replace(`url("/assets/cursor.webp")`, `url("data:image/gif;base64,${readFileSync(`${path}/src/assets/cursor.webp`).toString("base64")}")`)
-    .replace(`href="/assets/favicon.gif"`, `href="data:image/gif;base64,${readFileSync(`${path}/src/assets/favicon.gif`).toString("base64")}"`)
-    .replace(`src="/assets/mask.png"`, `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/mask.png`).toString("base64")}"`);
+    .replace(`url("/assets/cursor.webp")`, `url("data:image/webp;base64,${readFileSync(`${path}/src/assets/cursor.webp`).toString("base64")}")`)
+    .replace(`href="/assets/favicon.gif"`, `href="data:image/favicon;base64,${readFileSync(`${path}/src/assets/favicon.gif`).toString("base64")}"`)
+    .replace(`src="/assets/mask.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/mask.png`).toString("base64")}"`);
 writeFileSync(`${path}/dist/index.html`, indexContent, {recursive: true, force: true});
+
+let snapshotContent = readFileSync(`${path}/src/snapshot.html`, "utf-8")
+    .replace('src="/assets/retrospective.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/retrospective.gif`).toString("base64")}"`)
+    .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
+    .replace('src="/assets/basilisk.gif"', `src="data:image/gif;base64,${readFileSync(`${path}/src/assets/basilisk.gif`).toString("base64")}"`)
+    .replace(`url("/assets/cursor.webp")`, `url("data:image/webp;base64,${readFileSync(`${path}/src/assets/cursor.webp`).toString("base64")}")`)
+    .replace(`href="/assets/favicon.gif"`, `href="data:image/gif;base64,${readFileSync(`${path}/src/assets/favicon.gif`).toString("base64")}"`)
+    .replace(`src="/assets/mask.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/mask.png`).toString("base64")}"`);
+writeFileSync(`${path}/dist/snapshot.html`, snapshotContent, {recursive: true, force: true});
 
 let retrospectiveContent = readFileSync(`${path}/src/retrospective.html`, "utf-8")
     .replace(`/assets/autonomous-response.png`, `data:image/png;base64,${readFileSync(`${path}/src/assets/autonomous-response.png`).toString("base64")}`)
@@ -50,11 +59,11 @@ let rabbitholeContent = readFileSync(`${path}/src/rabbithole.html`, "utf-8")
     .replace(`src="/assets/next.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/next.png`).toString("base64")}"`)
 writeFileSync(`${path}/dist/rabbithole.html`, rabbitholeContent, {recursive: true, force: true});
 
-let submissionsContent = readFileSync(`${path}/src/submissions.html`, "utf-8")
+let demoCmsContent = readFileSync(`${path}/src/demo-cms.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
     .replace(`href="/assets/favicon.gif"`, `href="data:image/gif;base64,${readFileSync(`${path}/src/assets/favicon.gif`).toString("base64")}"`)
     .replace('<script src="sqlite3.js"></script>', `<script>${readFileSync(`${path}/src/sqlite3.js`, "utf-8")}</script>`)
-writeFileSync(`${path}/dist/submissions.html`, submissionsContent, {recursive: true, force: true});
+writeFileSync(`${path}/dist/demo-cms.html`, demoCmsContent, {recursive: true, force: true});
 
 let escapeContent = readFileSync(`${path}/src/escape.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
@@ -90,7 +99,7 @@ cpSync(`${path}/src//assets/cube-f4dbdc79c695.gif`, `${path}/dist/cube-f4dbdc79c
 cpSync(`${path}/src/basilisk.blend.zip`, `${path}/dist/basilisk.blend.zip`, {recursive: true, force: true});
 cpSync(`${path}/src/sqlite3.wasm`, `${path}/dist/sqlite3.wasm`, {recursive: true, force: true});
 cpSync(`${path}/src/robots.txt`, `${path}/dist/robots.txt`, {recursive: true, force: true});
-cpSync(`${path}/src/db.sqlite`, `${path}/dist/db.sqlite`, {recursive: true, force: true});
+cpSync(`${path}/src/demo.sqlite`, `${path}/dist/demo.sqlite`, {recursive: true, force: true});
 cpSync(`${path}/src/server.js`, `${path}/dist/server.js`, {recursive: true, force: true});
 
 console.log("build completed");
