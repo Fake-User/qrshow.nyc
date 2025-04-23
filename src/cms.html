@@ -17,7 +17,7 @@
             }
             body{
                 overscroll-behavior: none;
-                width: max(900px, 100vw);
+                width: max(300px, 100vw);
                 background-color: #000;
                 flex-direction: column;
                 box-sizing: border-box;
@@ -77,20 +77,33 @@
                     overflow-x: hidden;
                 }
             }
+            #grid{
+                overscroll-behavior: none;
+                scrollbar-width: none;
+                overflow-x: scroll;
+                overflow-y: scroll;
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
             #key{
+                position: sticky;
                 color: #000;
+                top: 0;
             }
             #res{
                 border-bottom: 1px solid #fff;
-                overscroll-behavior: none;
                 height: min-content;
                 overflow-y: scroll;
-                max-height: 100%;
                 cursor: pointer;
-                width: 100%;
 
                 div{
                     background-color: #000;
+                }
+            }
+            @media(max-width: 800px){
+                body{
+                    padding: 0px;
                 }
             }
         </style>
@@ -99,20 +112,22 @@
         <div id="main"">
             <input type="text" id="query" placeholder="sql statement" value="select * from submissions;">
             <div id="row">nobody here ...</div>
-            <div id="key">
-                <div>id</div>
-                <div>name</div>
-                <div>role</div>
-                <div>email</div>
-                <div>link</div>
-                <div>medium</div>
-                <div>title</div>
-                <div>category</div>
-                <div>author</div>
-                <div>note</div>
-                <div>date</div>
+            <div id="grid">
+                <div id="key">
+                    <div>id</div>
+                    <div>name</div>
+                    <div>role</div>
+                    <div>email</div>
+                    <div>link</div>
+                    <div>medium</div>
+                    <div>title</div>
+                    <div>category</div>
+                    <div>author</div>
+                    <div>note</div>
+                    <div>date</div>
+                </div>
+                <div id="res"></div>
             </div>
-            <div id="res"></div>
         </div>
         <script src="sqlite3.js"></script>
         <script>
@@ -133,7 +148,7 @@
                     );
                     dbExec();
                 };
-                fetch(`${window.location.pathname}/demo.sqlite`)
+                fetch("demo.sqlite")
                 .then(res => res.arrayBuffer())
                 .then(buffer => {initdb(buffer)})
             };

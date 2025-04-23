@@ -10,8 +10,8 @@ const fileEscape = Bun.file(`./escape.html`);
 const fileFinale = Bun.file(`./finale.html`);
 const fileAlone = Bun.file(`./alone.html`);
 const fileIndex = Bun.file(`./index.html`);
+const fileDb = Bun.file(`./demo.sqlite`);
 const fileCms = Bun.file(`./cms.html`);
-const fileDb = Bun.file(`./db.sqlite`);
 
 /* routes */
 const server = Bun.serve({
