@@ -11,6 +11,9 @@
                 src: url("/assets/ogcourier.woff2");
                 font-family: courier;
             }
+            :root{
+                --col: 120px;
+            }
             *::selection{
                 background-color: #fff;
                 color: #000;
@@ -63,10 +66,11 @@
                 height: 11lh;
             }
             #key, #res{
-                grid-template-columns: min-content repeat(10, 1fr);
+                grid-template-columns: 45px 120px 120px 240px 240px 120px 120px 120px 120px var(--col) 200px;
+                width: max(min-content, 100%);
                 grid-template-rows: 30px;
+                min-width: max-content;
                 background-color: #fff;
-                scrollbar-width: none;
                 white-space: nowrap;
                 line-height: 30px;
                 display: grid;
@@ -94,7 +98,6 @@
             #res{
                 border-bottom: 1px solid #fff;
                 height: min-content;
-                overflow-y: scroll;
                 cursor: pointer;
 
                 div{
@@ -104,6 +107,11 @@
             @media(max-width: 800px){
                 body{
                     padding: 0px;
+                }
+            }
+            @media(min-width: calc(1615px)){
+                :root{
+                    --col: calc(100vw - 1495px)
                 }
             }
         </style>
