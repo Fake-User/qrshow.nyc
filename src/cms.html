@@ -39,6 +39,7 @@
             }
             #main{
                 grid-template-rows: 60px auto 1fr;
+                box-sizing: border-box;
                 border: 1px solid #fff;
                 height: min-content;
                 max-height: 100%;
@@ -51,6 +52,8 @@
                 border-bottom: 1px solid #fff;
                 background-color: #000;
                 font-family: courier;
+                border-radius: none;
+                white-space: nowrap;
                 font-size: 1rem;
                 padding: 0 20px;
                 color: #fff;
@@ -61,9 +64,13 @@
             }
             #row{
                 border-bottom: 1px solid #fff;
+                overscroll-behavior: none;
+                height: min(11lh, 30dvh);
+                scrollbar-width: none;
+                white-space: nowrap;
+                overflow-x: scroll;
                 overflow-y: scroll;
                 padding: 20px;
-                height: 11lh;
             }
             #key, #res{
                 grid-template-columns: 45px 120px 120px 240px 240px 120px 120px 120px 120px var(--col) 200px;
@@ -109,9 +116,9 @@
                     padding: 0px;
                 }
             }
-            @media(min-width: calc(1615px)){
+            @media(min-width: calc(1617px)){
                 :root{
-                    --col: calc(100vw - 1495px)
+                    --col: calc(100vw - 1497px)
                 }
             }
         </style>
