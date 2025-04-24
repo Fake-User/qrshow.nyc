@@ -59,11 +59,11 @@ let rabbitholeContent = readFileSync(`${path}/src/rabbithole.html`, "utf-8")
     .replace(`src="/assets/next.png"`, `src="data:image/png;base64,${readFileSync(`${path}/src/assets/next.png`).toString("base64")}"`)
 writeFileSync(`${path}/dist/rabbithole.html`, rabbitholeContent, {recursive: true, force: true});
 
-let cmsContent = readFileSync(`${path}/src/cms.html`, "utf-8")
+let demoCmsContent = readFileSync(`${path}/src/demo-cms.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)
     .replace(`href="/assets/favicon.gif"`, `href="data:image/gif;base64,${readFileSync(`${path}/src/assets/favicon.gif`).toString("base64")}"`)
     .replace('<script src="sqlite3.js"></script>', `<script>${readFileSync(`${path}/src/sqlite3.js`, "utf-8")}</script>`)
-writeFileSync(`${path}/dist/cms.html`, cmsContent, {recursive: true, force: true});
+writeFileSync(`${path}/dist/demo-cms.html`, demoCmsContent, {recursive: true, force: true});
 
 let escapeContent = readFileSync(`${path}/src/escape.html`, "utf-8")
     .replace(`url("/assets/ogcourier.woff2")`, `url("data:font/woff2;base64,${readFileSync(`${path}/src/assets/ogcourier.woff2`).toString("base64")}")`)

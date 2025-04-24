@@ -66,7 +66,7 @@
             #row{
                 border-bottom: 1px solid #fff;
                 overscroll-behavior: none;
-                height: min(11lh, 35dvh);
+                height: min(10lh, 30dvh);
                 scrollbar-width: none;
                 white-space: nowrap;
                 overflow-x: scroll;
@@ -74,7 +74,7 @@
                 padding: 20px;
             }
             #key, #res{
-                grid-template-columns: 45px 120px 120px 240px 240px 120px 120px 120px 120px var(--col) 200px;
+                grid-template-columns: 45px 120px 120px 240px 240px 120px 240px 120px var(--col) 200px;
                 width: max(min-content, 100%);
                 grid-template-rows: 30px;
                 background-color: #fff;
@@ -138,7 +138,6 @@
                     <div>medium</div>
                     <div>title</div>
                     <div>category</div>
-                    <div>author</div>
                     <div>note</div>
                     <div>date</div>
                 </div>
@@ -193,7 +192,6 @@
                             <div row="${row.id}">${row.medium}</div>
                             <div row="${row.id}">${row.title}</div>
                             <div row="${row.id}">${row.category}</div>
-                            <div row="${row.id}">${row.author}</div>
                             <div row="${row.id}">${row.notes}</div>
                             <div row="${row.id}">${row.date}</div>
                         `;
@@ -213,7 +211,6 @@
                             medium: ${row.medium}<br aria-hidden="true">
                             title: ${row.title}<br aria-hidden="true">
                             category: ${row.category}<br aria-hidden="true">
-                            author: ${row.author}<br aria-hidden="true">
                             notes: ${row.notes}<br aria-hidden="true">
                             date: ${row.date}<br aria-hidden="true">
                         `;

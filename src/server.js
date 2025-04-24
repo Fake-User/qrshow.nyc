@@ -5,13 +5,13 @@ const fileRabbithole = Bun.file(`./rabbithole.html`);
 const fileCube = Bun.file(`./cube-f4dbdc79c695.gif`);
 const fileSnapshot = Bun.file(`./snapshot.html`);
 const fileTrifecta = Bun.file(`./trifecta.html`);
+const fileDemoCms = Bun.file(`./demo-cms.html`);
 const fileSqlite3 = Bun.file(`./sqlite3.wasm`);
 const fileEscape = Bun.file(`./escape.html`);
 const fileFinale = Bun.file(`./finale.html`);
 const fileAlone = Bun.file(`./alone.html`);
 const fileIndex = Bun.file(`./index.html`);
 const fileDb = Bun.file(`./demo.sqlite`);
-const fileCms = Bun.file(`./cms.html`);
 
 /* routes */
 const server = Bun.serve({
@@ -23,7 +23,7 @@ const server = Bun.serve({
         /* main */
         if(path === "/" || path === "/index.html"){return new Response(fileIndex, {headers: {"Content-Type": "text/html"}})};
         if(path === "/retrospective" || path === "/retrospective.html"){return new Response(fileRetrospective, {headers: {"Content-Type": "text/html"}})};
-        if(path === "/cms" || path === "/cms.html"){return new Response(fileCms, {headers: {"Content-Type": "text/html"}})};
+        if(path === "/demo-cms" || path === "/cms.html"){return new Response(fileDemoCms, {headers: {"Content-Type": "text/html"}})};
         if(path === "/snapshot" || path === "/snapshot.html"){return new Response(fileSnapshot, {headers: {"Content-Type": "text/html"}})};
 
         /* files */
