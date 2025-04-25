@@ -226,7 +226,7 @@
             }
         </style>
     </head>
-    <body>
+    <body role="application">
         <div id="main">
             <div id="query-wrapper">
                 <input type="text" id="query" placeholder="sql statement" value="SELECT * FROM submissions;">
@@ -379,6 +379,7 @@
 
             /* KEYBOARD */
             window.addEventListener("keydown", e => {
+                if(e.key === "Tab"){e.preventDefault()};
                 if(stateDialog){
                     if(e.key === "Escape" || e.key === "x" || e.key === "X" || e.key === "i" || e.key === "I" || e.key === "/" || e.key === "?"){e.preventDefault(); toggleDialog(); return};
                     return;
